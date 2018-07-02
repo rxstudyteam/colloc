@@ -41,4 +41,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+
+    testImplementation'org.junit.jupiter:junit-jupiter-api:5.0.0-RC2'
+    testRuntimeOnly'org.junit.jupiter:junit-jupiter-engine:5.0.0-RC2'
+    testImplementation'org.junit.platform:junit-platform-runner:1.0.0-RC2'
 }
