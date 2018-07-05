@@ -10,11 +10,14 @@ abstract class BaseActivity() : AppCompatActivity() {
 
     abstract val requestPermissionList: List<String>
     abstract val initView: () -> Unit
+    abstract val layoutResID:  Int
+
 
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        setContentView(layoutResID)
         super.onCreate(savedInstanceState)
 
         if (requestPermissionList.isNotEmpty()) {
@@ -22,11 +25,12 @@ abstract class BaseActivity() : AppCompatActivity() {
         } else {
             initView()
         }
+
+
+
     }
 
     fun requestPermission(initView: () -> Unit) {
 
     }
-
-
 }
