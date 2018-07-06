@@ -21,6 +21,7 @@ class ImageWrapperTestActivity :BaseActivity(){
         ImageLoader.loadImage(this, image_test_1, "https://s-i.huffpost.com/gen/5024096/thumbs/o-IMAGES-570.jpg?7")
         ImageLoader.loadCircleImage(this, image_test_2, "https://s-i.huffpost.com/gen/5024096/thumbs/o-IMAGES-570.jpg?7")
         ImageLoader.loadImage(this, image_test_3, "https://pbs.twimg.com/profile_images/879901726739808256/ry_UkEdB_400x400.jpg", true)
+        ImageLoader.loadBlurImage(this, image_test_4, "http://walartmuseum.or.kr/2015/wp-content/uploads/2014/09/%ED%99%94%EB%B3%91943x1115_v21.jpg")
     }
 
 }
