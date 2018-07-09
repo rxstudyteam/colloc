@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1011892337923",
+    "firebase_url": "https://colloc-725b2.firebaseio.com",
+    "project_id": "colloc-725b2",
+    "storage_bucket": "colloc-725b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011892337923:android:532149d535c1244e",
+        "android_client_info": {
+          "package_name": "com.karrel.colloc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1011892337923-ileuoq1d1rgp4u4bmngkd3j8gn54807a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.karrel.colloc",
+            "certificate_hash": "502ec90d430d3606ba30549f0b7c207daa023da8"
+          }
+        },
+        {
+          "client_id": "1011892337923-90lfsq42vak55hkldut22e3mjv0phbgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGHWHOhb87gE3yktUkVKP3mpohHP9rSTY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1011892337923-90lfsq42vak55hkldut22e3mjv0phbgs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

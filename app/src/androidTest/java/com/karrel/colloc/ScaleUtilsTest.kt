@@ -18,7 +18,7 @@ import android.util.Log
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4::class)
-class ScalefUtilsTest {
+class ScaleUtilsTest {
 
     @Test
     fun dp2pxText() {
