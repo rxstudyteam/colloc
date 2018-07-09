@@ -41,7 +41,8 @@ class CollocFirebaseMessagingService : FirebaseMessagingService() {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             putExtra("Notification", body)
         }
-        var pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT/*Flag indicating that this PendingIntent can be used only once.*/)
+
+        var pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
         val notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
         var notificationBuilder = NotificationCompat.Builder(this,"Notification")
@@ -53,6 +54,6 @@ class CollocFirebaseMessagingService : FirebaseMessagingService() {
                 .setContentIntent(pendingIntent)
 
         var notificationManager: NotificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(0,notificationBuilder.build())
+        notificationManager.notify(0, notificationBuilder.build())
     }
 }
