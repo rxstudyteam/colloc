@@ -1,2 +1,1 @@
-Colloc
-eastar
+Colloc eastar
