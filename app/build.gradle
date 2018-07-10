@@ -20,6 +20,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //https://developer.android.com/studio/write/lint?hl=ko
+    // Analyze -> Inspect Code  의 결과 표시 중에서 Android Lint 라고 표시 되는 부분 만 제어가 가능 한 것으로 보입니다.
+    lintOptions {
+        disable 'GoogleAppIndexingWarning','AllowBackup'
+    }
+
 }
 
 dependencies {
