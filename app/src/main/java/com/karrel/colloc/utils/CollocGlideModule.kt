@@ -23,7 +23,7 @@ class CollocGlideModule : AppGlideModule() {
 
 
         builder.setDefaultRequestOptions(RequestOptions().format(DecodeFormat.PREFER_ARGB_8888));
-        builder.setLogLevel(Log.DEBUG);
+        builder.setLogLevel(Log.VERBOSE);
 
 
         //cache https://bumptech.github.io/glide/doc/caching.html#clearing-the-disk-cache
