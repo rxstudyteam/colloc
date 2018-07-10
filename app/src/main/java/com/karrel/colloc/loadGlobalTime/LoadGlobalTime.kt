@@ -20,8 +20,8 @@ import retrofit2.http.Query
 interface NaverGlobalTimeService{
     @GET("{param}")
     fun loadCurrentTimeRx(
-            @Path("param")param : String,
-            @Query("sort") query : String
+            @Path("param")param : String,  // @Path 를 사용하면 어노테이션에 지정된 영역에 삽입 할수있습니다.
+            @Query("sort") query : String  // @Query 를 사용하면 주어진 주소값 이후 ?value=parameter 형태로 쿼리를 추가 할 수 있습니다.
     ) : Observable<ResponseBody>
 }
 
@@ -33,20 +33,19 @@ private fun createOkHttpClient(): OkHttpClient {
     return builder.build()
 }
 
-
 class LoadGlobalTime {
-
     companion object {
         val apis =  Retrofit.Builder().run {
             baseUrl("https://global.apis.naver.com/")  //NOTE 일반경우
 //            baseUrl("http://apis.navasdfasdfasdfer.com")  //NOTE 타임아웃.
 //            baseUrl("http://apis.naver.com")  //NOTE XML
-                    .client(createOkHttpClient())
+            .client(createOkHttpClient())
             addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             build()
         }
     }
-
+    //NOTE sort 는 쿼리 테스트를 위하여 추가 한 것이라 리스폰스에 영항이 없음.
+    //NOTE param 에 currentTime 이외의 값이 들어오면 json으로 리스폰스가 들어옵니다.
     fun load(param : String = "currentTime",query : String = "sort",onLoaded : (time : String)->Unit,onError : (error : ErrorInfo)->Unit){
         val services= apis.create(NaverGlobalTimeService::class.java)
 
@@ -62,10 +61,7 @@ class LoadGlobalTime {
                         else ->throw Exception("Other Type Contents : "+body.contentType())
                     }
                 }
-                .subscribe(
-                        { content ->
-                            onLoaded(content)
-                        },
+                .subscribe({ content ->onLoaded(content)},
                         {
                             t->
                             if (t is HttpException) {
