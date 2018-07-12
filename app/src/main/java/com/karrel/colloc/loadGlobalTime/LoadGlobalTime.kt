@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.karrel.colloc.loadGlobalTime.model.ErrorInfo
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
@@ -33,24 +34,22 @@ private fun createOkHttpClient(): OkHttpClient {
     return builder.build()
 }
 
-class LoadGlobalTime {
-    companion object {
-        val apis =  Retrofit.Builder().run {
-            baseUrl("https://global.apis.naver.com/")  //NOTE 일반경우
-//            baseUrl("http://apis.navasdfasdfasdfer.com")  //NOTE 타임아웃.
-//            baseUrl("http://apis.naver.com")  //NOTE XML
-            .client(createOkHttpClient())
-            addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            build()
-        }
+object LoadGlobalTime {
+
+    val apis =  Retrofit.Builder().run {
+        baseUrl("https://global.apis.naver.com/")
+        .client(createOkHttpClient())
+        addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        build()
     }
+
     //NOTE sort 는 쿼리 테스트를 위하여 추가 한 것이라 리스폰스에 영항이 없음.
     //NOTE param 에 currentTime 이외의 값이 들어오면 json으로 리스폰스가 들어옵니다.
-    fun load(param : String = "currentTime",query : String = "sort",onLoaded : (time : String)->Unit,onError : (error : ErrorInfo)->Unit){
+    fun load(param : String = "currentTime",query : String = "sort",onLoaded : (time : String)->Unit,onError : (error : ErrorInfo)->Unit) : Disposable{
         val services= apis.create(NaverGlobalTimeService::class.java)
 
         //TODO Disposable 을 어떻게 처리 할 것인가? 고민을 해보아야함.
-        val disposable = services.loadCurrentTimeRx(param,query)
+        return services.loadCurrentTimeRx(param,query)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map {body ->

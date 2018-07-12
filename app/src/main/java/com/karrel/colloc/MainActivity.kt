@@ -19,9 +19,10 @@ class MainActivity : BaseActivity() {
 
 
     override val initView: () -> Unit = {
-        LoadGlobalTime().load(
-                onLoaded = {time->Log.d(TAG, "Load Global Time : $time")},
-                onError = {info->Log.d(TAG, "Load Fail :  $info")}
+        val disposable = LoadGlobalTime.load(
+                onLoaded = { time -> Log.d(TAG, "Load Global Time : $time") },
+                onError = { info -> Log.d(TAG, "Load Fail :  $info") }
         )
+        disposables.add(disposable)
     }
 }

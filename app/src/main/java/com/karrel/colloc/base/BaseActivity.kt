@@ -3,6 +3,7 @@ package com.karrel.colloc.base
 import android.os.Bundle
 import android.support.annotation.CallSuper
 import android.support.v7.app.AppCompatActivity
+import io.reactivex.disposables.CompositeDisposable
 
 
 abstract class BaseActivity() : AppCompatActivity() {
@@ -11,7 +12,7 @@ abstract class BaseActivity() : AppCompatActivity() {
     abstract val requestPermissionList: List<String>
     abstract val initView: () -> Unit
     abstract val layoutResID:  Int
-
+    protected val disposables : CompositeDisposable = CompositeDisposable()
 
 
     @CallSuper
@@ -33,4 +34,13 @@ abstract class BaseActivity() : AppCompatActivity() {
     fun requestPermission(initView: () -> Unit) {
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (!disposables.isDisposed) {
+            disposables.dispose()
+        }
+    }
+
+
 }
