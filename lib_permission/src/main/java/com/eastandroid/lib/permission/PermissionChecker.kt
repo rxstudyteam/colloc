@@ -13,6 +13,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.view.WindowManager
 import java.util.*
+import kotlin.collections.ArrayList
 
 class PermissionChecker : android.support.v7.app.AppCompatActivity() {
 
@@ -156,7 +157,7 @@ class PermissionChecker : android.support.v7.app.AppCompatActivity() {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private fun fireGranted() {
-        PermissionObserver.instance.notifyObservers()
+        PermissionObserver.instance.notifyObservers(ArrayList<String>())
         finish()
         overridePendingTransition(0, 0)
     }

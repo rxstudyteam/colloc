@@ -3,6 +3,7 @@ package com.karrel.colloc.base
 import android.os.Bundle
 import android.support.annotation.CallSuper
 import android.support.v7.app.AppCompatActivity
+import com.eastandroid.lib.permission.PermissionRequest
 
 
 abstract class BaseActivity() : AppCompatActivity() {
@@ -32,5 +33,6 @@ abstract class BaseActivity() : AppCompatActivity() {
 
     fun requestPermission(initView: () -> Unit) {
 
+        PermissionRequest(this, requestPermissionList).setGrentedListener(initView).run()
     }
 }

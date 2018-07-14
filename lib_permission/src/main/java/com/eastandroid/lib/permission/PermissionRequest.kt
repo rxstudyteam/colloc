@@ -5,39 +5,49 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.support.v4.content.ContextCompat
+import android.view.View
 import java.util.*
 
-class PermissionRequest(context: Context
-                        , permissions: List<String>
-                        , onPermissionGrantedListener: OnPermissionGrantedListener? = null
-                        , onPermissionDeniedListener: OnPermissionDeniedListener? = null
-                        , rquestMessage: String? = null
-                        , denyMessage: String? = null) : Observer {
+class PermissionRequest(context: Context, permissions: List<String>) : Observer {
 
     private val mContext: Context = context
     private val requestPermissions: List<String> = permissions
-    private val mOnPermissionGrantedListener: OnPermissionGrantedListener? = onPermissionGrantedListener
-    private val mOnPermissionDeniedListener: OnPermissionDeniedListener? = onPermissionDeniedListener
-    private val mRequestMessage: CharSequence? = rquestMessage
-    private val mDenyMessage: CharSequence? = denyMessage
+    private var mRequestMessage: CharSequence? = null
+    private var mDenyMessage: CharSequence? = null
 
-    interface OnPermissionGrantedListener {
-        fun onGranted()
+    private lateinit var onGranted: () -> Unit
+    private var onDenied: ((requester: PermissionRequest, deniedPermissions: List<String>) -> Unit)? = null
+
+    fun setGrentedListener(onGranted: () -> Unit): PermissionRequest {
+        this.onGranted = onGranted
+        return this
     }
 
-    interface OnPermissionDeniedListener {
-        fun onDenied(request: PermissionRequest, deniedPermissions: List<String>)
+    fun setGrentedListener(onDenied: (requester: PermissionRequest, deniedPermissions: List<String>) -> Unit): PermissionRequest {
+        this.onDenied = onDenied
+        return this
     }
 
-    override fun update(observer: Observable, data: Any) {
+    fun setRequestMessage(requestMessage: String): PermissionRequest {
+        mRequestMessage = requestMessage
+        return this
+    }
+
+    fun setDenyMessage(denyMessage: String): PermissionRequest {
+        mDenyMessage = denyMessage
+        return this
+    }
+
+    override fun update(observer: Observable, data: Any?) {
         @Suppress("UNCHECKED_CAST")
+
         val deniedPermissions = data as List<String>
         android.util.Log.e("PERMISSION", "승인상태1:$deniedPermissions")
 
         if (deniedPermissions.isEmpty())
-            mOnPermissionGrantedListener?.onGranted()
+            onGranted()
         else
-            mOnPermissionDeniedListener?.onDenied(this, deniedPermissions)
+            onDenied?.invoke(this, deniedPermissions)
 
         PermissionObserver.instance.deleteObserver(this)
     }
@@ -45,7 +55,7 @@ class PermissionRequest(context: Context
 
     fun run() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
-            mOnPermissionGrantedListener?.onGranted()
+            onGranted()
 
         val deniedPermissions = ArrayList<String>()
         for (permission in requestPermissions) {
@@ -53,11 +63,11 @@ class PermissionRequest(context: Context
                 deniedPermissions.add(permission)
         }
         if (deniedPermissions.size <= 0)
-            mOnPermissionGrantedListener?.onGranted()
+            onGranted()
 
         PermissionObserver.instance.addObserver(this)
         val intent = Intent(mContext, PermissionChecker::class.java)
-        intent.putExtra(PermissionChecker.EXTRA.PERMISSIONS, requestPermissions as ArrayList<String>)
+        intent.putExtra(PermissionChecker.EXTRA.PERMISSIONS, ArrayList<String>(requestPermissions))
         intent.putExtra(PermissionChecker.EXTRA.REQUEST_MESSAGE, mRequestMessage)
         intent.putExtra(PermissionChecker.EXTRA.DENY_MESSAGE, mDenyMessage)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

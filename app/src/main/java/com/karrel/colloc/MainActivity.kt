@@ -5,7 +5,7 @@ import com.karrel.colloc.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 
-    override val requestPermissionList: List<String> = emptyList()
+    override val requestPermissionList: List<String> = listOf("android.permission.ACCESS_FINE_LOCATION")
 
 
     override val layoutResID: Int = R.layout.activity_main
