@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
 
 
     override val initView: () -> Unit = {
-        val disposable = NaverGlobalAPIProvider.load(
+        val disposable = NaverGlobalAPIProvider.getCurrentTime(
                 onLoaded = { time -> Log.d(TAG, "Load Global Time : $time") },
                 onError = { info -> Log.d(TAG, "Load Fail :  $info") }
         )
