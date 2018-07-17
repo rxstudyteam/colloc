@@ -1,6 +1,7 @@
 package com.karrel.colloc
 
 import android.os.Bundle
+import android.widget.Toast
 import com.karrel.colloc.base.BaseActivity
 
 class MainActivity : BaseActivity() {
@@ -13,9 +14,12 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // do something
+        Toast.makeText(this, "Receive message!", Toast.LENGTH_LONG).show()
     }
 
     override val initView: () -> Unit = {
 
     }
+
+
 }
