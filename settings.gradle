@@ -1,4 +1,4 @@
-include ':app', ':mlb_base'
+include ':app'
 include ':lib_permission'
 include ':mib_base'
 include ':nib_base'
