@@ -3,9 +3,9 @@ package com.karrel.colloc
 import android.os.Bundle
 import android.util.Log
 import com.karrel.colloc.base.BaseActivity
-import com.karrel.colloc.loadGlobalTime.LoadGlobalTime
+import com.karrel.colloc.loadGlobalTime.NaverGlobalAPIProvider
 
-private  const val TAG = "dlwlrma"
+private const val TAG = "dlwlrma"
 
 class MainActivity : BaseActivity() {
 
@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
 
 
     override val initView: () -> Unit = {
-        val disposable = LoadGlobalTime.load(
+        val disposable = NaverGlobalAPIProvider.getCurrentTime(
                 onLoaded = { time -> Log.d(TAG, "Load Global Time : $time") },
                 onError = { info -> Log.d(TAG, "Load Fail :  $info") }
         )
