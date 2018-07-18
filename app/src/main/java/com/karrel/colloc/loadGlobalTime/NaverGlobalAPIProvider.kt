@@ -3,6 +3,7 @@ package com.karrel.colloc.loadGlobalTime
 import com.google.gson.Gson
 import com.karrel.colloc.loadGlobalTime.model.ErrorInfo
 import io.reactivex.Observable
+import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -44,8 +45,9 @@ object NaverGlobalAPIProvider {
     }
 
     // RX api Test 를 위해서 분리하였음
-    fun getCurrentTimeObservable(param: String, query: String): Observable<String> {
-        return apis.getCurrentTime(param, query).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+    fun getCurrentTimeObservable(param: String = "currentTime", query: String = "sort", scheduler: Scheduler = AndroidSchedulers.mainThread()): Observable<String> {
+        return apis.getCurrentTime(param, query).subscribeOn(Schedulers.io())
+                .observeOn(scheduler) // fixme 안드로이드 main thread 로 호출하면 error 가 발생
                 .map { body ->
                     when (body.contentType()?.subtype()) {
                         "xml" -> throw Exception(Persister().read(ErrorInfo::class.java, body.string()).toString())
