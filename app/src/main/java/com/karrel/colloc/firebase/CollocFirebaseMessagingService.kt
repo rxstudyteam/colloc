@@ -32,9 +32,15 @@ class CollocFirebaseMessagingService : FirebaseMessagingService() {
 
         if(remoteMessage.notification != null) {
             Log.d(TAG, "Notification Message Body: ${remoteMessage.notification?.body}")
+            Log.d(TAG, "Notification Message Data: ${remoteMessage.data}")
             sendNotification(remoteMessage.notification?.body)
         }
+
+        if(remoteMessage.data != null) {
+            Log.d(TAG, "Notification Message Data: ${remoteMessage.data}")
+        }
     }
+
 
     private fun sendNotification(body: String?) {
         val intent = Intent(this, MainActivity::class.java).apply {
