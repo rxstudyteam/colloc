@@ -2,6 +2,7 @@ package com.karrel.colloc
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.karrel.colloc.base.BaseActivity
 import com.karrel.colloc.loadGlobalTime.NaverGlobalAPIProvider
 
@@ -16,6 +17,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // do something
+        Toast.makeText(this, "Receive message!", Toast.LENGTH_LONG).show()
     }
 
 
@@ -26,4 +28,6 @@ class MainActivity : BaseActivity() {
         )
         disposables.add(disposable)
     }
+
+
 }
