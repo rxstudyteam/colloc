@@ -10,8 +10,9 @@ abstract class BaseActivity() : AppCompatActivity() {
 
     abstract val requestPermissionList: List<String>
     abstract val initView: () -> Unit
-    abstract val layoutResID:  Int
-    protected val disposables : CompositeDisposable = CompositeDisposable()
+    abstract val layoutResID: Int
+    protected val disposables: CompositeDisposable = CompositeDisposable()
+
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +37,4 @@ abstract class BaseActivity() : AppCompatActivity() {
             disposables.dispose()
         }
     }
-
-
 }
