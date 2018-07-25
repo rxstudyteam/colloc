@@ -14,6 +14,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.karrel.colloc.MainActivity
 import com.karrel.colloc.R
+import com.karrel.colloc.notification.NotificationChannelManager
 
 class CollocFirebaseMessagingService : FirebaseMessagingService() {
 
@@ -45,27 +46,13 @@ class CollocFirebaseMessagingService : FirebaseMessagingService() {
             putExtra("Notification", body)
         }
 
-        val CHANNEL_ID = "CollocNotification"
-        val CHANNEL_NAME = "CollocChannel"
-        val description = "This is Colloc channel"
-        val importance = NotificationManager.IMPORTANCE_HIGH
-
         var notificationManager: NotificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-        if( android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, importance)
-            channel.description = description
-            channel.enableLights(true)
-            channel.lightColor = Color.RED
-            channel.enableVibration(true)
-            channel.setShowBadge(false)
-            notificationManager.createNotificationChannel(channel)
-        }
 
         var pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
         val notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
-        var notificationBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
+        var notificationBuilder = NotificationCompat.Builder(this, NotificationChannelManager.eChannel.CollocNotification.id)
                 .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("Colloc Notification")
