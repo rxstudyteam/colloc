@@ -6,6 +6,9 @@
     <data>
 
         <variable
+            name="vm"
+            type="com.karrel.colloc.main.CollocMainViewModel" />
+        <variable
             name="data"
             type="com.karrel.colloc.model.airdata.AirData" />
     </data>
