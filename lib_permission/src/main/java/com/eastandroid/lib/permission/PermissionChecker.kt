@@ -125,16 +125,16 @@ class PermissionChecker : android.support.v7.app.AppCompatActivity() {
         val context = mContext
         val message = mDenyMessage
 
-        if (message == null || message.length <= 0) {
+        if (message == null || message.isEmpty()) {
             fireDenied()
             return
         }
 
         mDlg = AlertDialog.Builder(context!!)//
                 .setMessage(message)//
-                .setOnCancelListener { dialog -> fireDenied() }//
-                .setPositiveButton("거부") { dialogInterface, i -> fireDenied() }//
-                .setNegativeButton("설정") { dialogInterface, i ->
+                .setOnCancelListener { _ -> fireDenied() }//
+                .setPositiveButton("거부") { _, _ -> fireDenied() }//
+                .setNegativeButton("설정") { _, _ ->
                     try {
                         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(Uri.parse("package:" + context.packageName))
                         startActivityForResult(intent, REQ_SETTING)
@@ -157,13 +157,13 @@ class PermissionChecker : android.support.v7.app.AppCompatActivity() {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private fun fireGranted() {
-        PermissionObserver.instance.notifyObservers(ArrayList<String>())
+        PermissionObserver.notifyObservers(ArrayList<String>())
         finish()
         overridePendingTransition(0, 0)
     }
 
     private fun fireDenied() {
-        PermissionObserver.instance.notifyObservers(mDeniedPermissions)
+        PermissionObserver.notifyObservers(mDeniedPermissions)
         finish()
         overridePendingTransition(0, 0)
     }
