@@ -1,6 +1,5 @@
 package com.karrel.colloc.main
 
-import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -14,10 +13,7 @@ import com.karrel.colloc.R
 import com.karrel.colloc.databinding.CollocMainFrBinding
 import kotlinx.android.synthetic.main.colloc_main_fr.*
 
-
 class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
-
-
     private lateinit var bb: CollocMainFrBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
