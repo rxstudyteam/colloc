@@ -1,34 +1,28 @@
 package com.karrel.colloc.notification
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
-import android.content.ContextWrapper
-import android.graphics.Color
-import android.os.Build
-import android.support.annotation.RequiresApi
+import android.app.Activity
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Intent
+import java.util.*
 
-@RequiresApi(Build.VERSION_CODES.O)
-class NotificationUtil(base: Context) : ContextWrapper(base) {
+class NotificationUtil {
 
-    val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    fun setNotification(timeInMilliSeconds: Long, activity: Activity) {
 
-    init {
-        createChannels()
+        val alarmManager = activity.getSystemService(Activity.ALARM_SERVICE) as AlarmManager
+        val alarmIntent = Intent(activity.applicationContext, AlarmReceiver::class.java)
+
+        alarmIntent.putExtra("reason", "notification")
+        alarmIntent.putExtra("timestamp", timeInMilliSeconds)
+
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = timeInMilliSeconds
+
+        val pendingIntent = PendingIntent.getBroadcast(activity, 0, alarmIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT)
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, 60000, pendingIntent)
+
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun createChannels() {
-        val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH)
-        channel.enableLights(true)
-        channel.lightColor = Color.RED
-        channel.enableVibration(true)
-        channel.setShowBadge(false)
-        notificationManager.createNotificationChannel(channel)
-    }
-
-    companion object {
-        const val CHANNEL_ID = "com.karrel.colloc.general"
-        const val CHANNEL_NAME = "colloc general channel"
-    }
 }
