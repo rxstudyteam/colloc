@@ -35,9 +35,6 @@ class AlarmService : JobIntentService() {
         val info = "좋음 - 신선한 공기 많이 마시세요~"
         val time = "2018-07-28 \n 오전09:00"
 
-        // 채널 생성
-        createChannel()
-
         val context = this.applicationContext
         var notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notifyIntent = Intent(this, MainActivity::class.java)
@@ -60,7 +57,7 @@ class AlarmService : JobIntentService() {
         val uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            notification = Notification.Builder(this, CHANNEL_ID)
+            notification = Notification.Builder(this, NotificationChannelManager.eChannel.GENERAL.id)
                     .setContentIntent(pendingIntent)
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher))
@@ -82,28 +79,8 @@ class AlarmService : JobIntentService() {
         notificationManager.notify(NOTIFICATION_ID, notification)
     }
 
-    private fun createChannel() {
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val context = this.applicationContext
-            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-            val importance = NotificationManager.IMPORTANCE_HIGH
-            val notificationChannel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, importance)
-            notificationChannel.enableVibration(true)
-            notificationChannel.setShowBadge(true)
-            notificationChannel.enableLights(true)
-            notificationChannel.lightColor = Color.RED
-            notificationChannel.description = CHANNEL_DESCRIPTION
-            notificationChannel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
-            notificationManager.createNotificationChannel(notificationChannel)
-        }
-    }
 
     companion object {
-        const val CHANNEL_ID = "com.karrel.colloc.general"
-        const val CHANNEL_NAME = "colloc general channel"
-        const val CHANNEL_DESCRIPTION = "Hello Colloc channel"
         const val NOTIFICATION_ID = 1000
         const val JOB_ID = 100
 
