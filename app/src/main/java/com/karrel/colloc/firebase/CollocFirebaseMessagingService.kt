@@ -9,7 +9,7 @@ import android.support.v4.app.NotificationCompat
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.karrel.colloc.MainActivity
+import com.karrel.colloc.ui.MainActivity
 import com.karrel.colloc.R
 
 class CollocFirebaseMessagingService : FirebaseMessagingService() {

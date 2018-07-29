@@ -8,4 +8,73 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.Notitle" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="text">
+        <item name="android:textColor">@color/text_color_1</item>
+    </style>
+
+    <style name="text.size1" parent="text">
+        <item name="android:textSize">@dimen/text_size_1</item>
+    </style>
+
+    <style name="text.size2" parent="text">
+        <item name="android:textSize">@dimen/text_size_2</item>
+    </style>
+
+    <style name="text.size3" parent="text">
+        <item name="android:textSize">@dimen/text_size_3</item>
+    </style>
+
+    <style name="text.size4" parent="text">
+        <item name="android:textSize">@dimen/text_size_4</item>
+    </style>
+
+    <style name="text.size5" parent="text">
+        <item name="android:textSize">@dimen/text_size_5</item>
+    </style>
+
+    <style name="text.size6" parent="text">
+        <item name="android:textSize">@dimen/text_size_6</item>
+    </style>
+
+    <style name="text.size1.bold" parent="text.size1">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.size2.bold" parent="text.size2">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.size3.bold" parent="text.size3">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.size4.bold" parent="text.size4">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.size5.bold" parent="text.size5">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.size6.bold" parent="text.size6">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text.size4.alpha" parent="text.size4">
+        <item name="android:textColor">@color/text_color_1_alpha</item>
+    </style>
+
+    <style name="text.size5.alpha" parent="text.size5">
+        <item name="android:textColor">@color/text_color_1_alpha</item>
+    </style>
+
+    <style name="text.size1.alpha" parent="text.size1">
+        <item name="android:textColor">@color/text_color_1_alpha</item>
+    </style>
+
 </resources>

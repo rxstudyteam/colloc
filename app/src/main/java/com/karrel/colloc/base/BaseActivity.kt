@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import com.eastandroid.lib.permission.PermissionRequest
 import io.reactivex.disposables.CompositeDisposable
 
-abstract class BaseActivity() : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     abstract val requestPermissionList: List<String>
     abstract val initView: () -> Unit
@@ -17,8 +17,8 @@ abstract class BaseActivity() : AppCompatActivity() {
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        setContentView(layoutResID)
         super.onCreate(savedInstanceState)
+        setContentView(layoutResID)
 
         if (requestPermissionList.isNotEmpty()) {
             requestPermission(initView)
