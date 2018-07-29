@@ -9,8 +9,11 @@ import android.graphics.Color
 import android.media.RingtoneManager
 import android.os.Build
 import android.support.v4.app.JobIntentService
+import android.util.Log
+import android.widget.RemoteViews
 import com.karrel.colloc.MainActivity
 import com.karrel.colloc.R
+import com.karrel.colloc.loadGlobalTime.NaverGlobalAPIProvider
 import java.util.*
 
 class AlarmService : JobIntentService() {
@@ -22,25 +25,34 @@ class AlarmService : JobIntentService() {
      */
     @SuppressLint("NewApi")
     override fun onHandleWork(intent: Intent) {
+
+        // TODO 데이터 로드
+        // 서버 or 로컬로부터 업데이트된 데이터를 가져오기
+        val location = intent?.extras?.getString("location")
+
+        // 더미 데이터
+        val title = "(미세미세) 청담동"
+        val info = "좋음 - 신선한 공기 많이 마시세요~"
+        val time = "2018-07-28 \n 오전09:00"
+
         // 채널 생성
         createChannel()
-
-        val timestamp = intent?.extras?.getLong("timestamp")
 
         val context = this.applicationContext
         var notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notifyIntent = Intent(this, MainActivity::class.java)
 
-        val title = "Colloc Notification"
-        val message = "Colloc Message data"
         notifyIntent.putExtra("title", title)
-        notifyIntent.putExtra("message", message)
-        notifyIntent.putExtra("notification", true)
-
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = timestamp ?: 0
+        notifyIntent.putExtra("message", info)
+        notifyIntent.putExtra("time", time)
 
         notifyIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+        val remoteViews = RemoteViews(context.packageName, R.layout.notification)
+        remoteViews.setImageViewResource(R.id.ivNotifImage, R.drawable.emoticon_eight_level_small_1)
+        remoteViews.setTextViewText(R.id.tvNotiTitle, title)
+        remoteViews.setTextViewText(R.id.tvNotiInfo, info)
+        remoteViews.setTextViewText(R.id.tvNotiTime, time)
 
         val pendingIntent = PendingIntent.getActivity(context, 0, notifyIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT)
@@ -53,10 +65,7 @@ class AlarmService : JobIntentService() {
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher))
                     .setAutoCancel(true)
-                    .setContentTitle(title)
-                    .setStyle(Notification.BigTextStyle()
-                            .bigText(message))
-                    .setContentText(message)
+                    .setCustomContentView(remoteViews)
                     .build()
         } else {
             notification = Notification.Builder(this)
@@ -65,8 +74,7 @@ class AlarmService : JobIntentService() {
                     .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.ic_launcher))
                     .setAutoCancel(true)
                     .setPriority(Notification.PRIORITY_MAX)
-                    .setContentTitle(title)
-                    .setContentText(message)
+                    .setCustomContentView(remoteViews)
                     .setSound(uri)
                     .build()
         }

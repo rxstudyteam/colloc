@@ -21,8 +21,7 @@ class MainActivity : BaseActivity() {
         // do something
         Toast.makeText(this, "Receive message!", Toast.LENGTH_LONG).show()
 
-        NotificationUtil().setNotification(Calendar.getInstance().timeInMillis + 15000,
-                this@MainActivity)
+        registerAlarm("청담동", 3600000)
     }
 
 
@@ -34,5 +33,8 @@ class MainActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-
+    private fun registerAlarm(location: String, interval: Long) {
+        NotificationUtil().setNotification(Calendar.getInstance().timeInMillis,
+                location, interval, this@MainActivity)
+    }
 }
