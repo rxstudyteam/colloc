@@ -62,7 +62,7 @@
         tools:text="좋음" />
 
     <TextView
-        android:id="@+id/satus"
+        android:id="@+id/status"
         style="@style/text.size4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -6,4 +6,5 @@
     <color name="bg_nice">#0079C5</color>
     <color name="text_color_1">#fff</color>
     <color name="text_color_1_alpha">#8fff</color>
+    <color name="bottom_line_bg">#1000</color>
 </resources>

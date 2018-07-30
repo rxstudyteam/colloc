@@ -36,6 +36,8 @@ class MainActivity : BaseActivity() {
                 .subscribe {
                     viewModel.input.setLocation("광진구 중곡 1동")
                     viewModel.input.setTime("2018-07-29 07:15 PM")
+                    viewModel.input.setTitleStatus("좋음")
+                    viewModel.input.setStatus("좋은 공기 많이 마시세요~")
                 }
     }
 

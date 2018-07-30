@@ -34,6 +34,13 @@
                 android:layout_height="@dimen/current_fragment_height"
                 tools:layout="@layout/fragment_current" />
 
+            <fragment
+                android:id="@+id/advertisingFragment"
+                android:name="com.karrel.colloc.ui.AdvertisingFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/advertising_height"
+                tools:layout="@layout/fragment_advertising" />
+
         </LinearLayout>
 
     </ScrollView>

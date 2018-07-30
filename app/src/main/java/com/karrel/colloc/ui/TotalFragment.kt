@@ -27,11 +27,12 @@ class TotalFragment : Fragment() {
     private fun setupObservableEvents() {
         viewModel.output.locationObservable().subscribe { curLocationMini.text = it }
         viewModel.output.timeObservable().subscribe { time.text = it }
+        viewModel.output.titlStatusObservable().subscribe { titleStatus.text = it }
+        viewModel.output.statusObservable().subscribe { status.text = it }
     }
 
     private fun setupButtonsEvents() {
         screenShare.setOnClickListener { viewModel.input.scrrenShare() }
         showForecast.setOnClickListener { viewModel.input.showForecast() }
     }
-
 }

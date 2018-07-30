@@ -10,8 +10,22 @@ object MainViewmodelImpl : MainViewmodel {
     val toastObservable = PublishSubject.create<String>()
     val locationObservable = PublishSubject.create<String>()
     val timeObservable = PublishSubject.create<String>()
+    val titlStatusObservable = PublishSubject.create<String>()
+    val statusObservable = PublishSubject.create<String>()
 
     class Input : MainViewmodel.Input {
+        override fun setTitleStatus(s: String) {
+            titlStatusObservable.onNext(s)
+        }
+
+        override fun setStatus(s: String) {
+            statusObservable.onNext(s)
+        }
+
+        override fun showAdvertising() {
+            toastObservable.onNext("clicked advertising")
+        }
+
         override fun setTime(s: String) {
             timeObservable.onNext("($s)")
         }
@@ -33,6 +47,8 @@ object MainViewmodelImpl : MainViewmodel {
         override fun toastObservable() = toastObservable.observeOn(AndroidSchedulers.mainThread())!!
         override fun locationObservable() = locationObservable.observeOn(AndroidSchedulers.mainThread())!!
         override fun timeObservable() = timeObservable.observeOn(AndroidSchedulers.mainThread())!!
+        override fun titlStatusObservable() = titlStatusObservable.observeOn(AndroidSchedulers.mainThread())!!
+        override fun statusObservable() = statusObservable.observeOn(AndroidSchedulers.mainThread())!!
     }
 
 }
