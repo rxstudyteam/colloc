@@ -1,9 +1,12 @@
 package com.karrel.colloc.firebase
 
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.media.RingtoneManager
 import android.support.v4.app.NotificationCompat
 import android.util.Log
@@ -11,6 +14,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.karrel.colloc.MainActivity
 import com.karrel.colloc.R
+import com.karrel.colloc.notification.NotificationChannelManager
 
 class CollocFirebaseMessagingService : FirebaseMessagingService() {
 
@@ -30,17 +34,11 @@ class CollocFirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Log.d(TAG, "From: " + remoteMessage.from)
 
-        if(remoteMessage.notification != null) {
-            Log.d(TAG, "Notification Message Body: ${remoteMessage.notification?.body}")
-            Log.d(TAG, "Notification Message Data: ${remoteMessage.data}")
-            sendNotification(remoteMessage.notification?.body)
-        }
-
         if(remoteMessage.data != null) {
             Log.d(TAG, "Notification Message Data: ${remoteMessage.data}")
+            sendNotification(remoteMessage.data.toString())
         }
     }
-
 
     private fun sendNotification(body: String?) {
         val intent = Intent(this, MainActivity::class.java).apply {
@@ -48,18 +46,21 @@ class CollocFirebaseMessagingService : FirebaseMessagingService() {
             putExtra("Notification", body)
         }
 
+        var notificationManager: NotificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+
         var pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
         val notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
-        var notificationBuilder = NotificationCompat.Builder(this,"Notification")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("Push Notification FCM")
+        var notificationBuilder = NotificationCompat.Builder(this, NotificationChannelManager.eChannel.CollocNotification.id)
+                .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentTitle("Colloc Notification")
                 .setContentText(body)
                 .setAutoCancel(true)
                 .setSound(notificationSound)
                 .setContentIntent(pendingIntent)
 
-        var notificationManager: NotificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(0, notificationBuilder.build())
     }
 }

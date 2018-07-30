@@ -5,6 +5,8 @@ import android.util.Log
 import android.widget.Toast
 import com.karrel.colloc.base.BaseActivity
 import com.karrel.colloc.loadGlobalTime.NaverGlobalAPIProvider
+import com.karrel.colloc.notification.NotificationUtil
+import java.util.*
 
 private const val TAG = "dlwlrma"
 
@@ -18,6 +20,8 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         // do something
         Toast.makeText(this, "Receive message!", Toast.LENGTH_LONG).show()
+
+        registerAlarm("청담동", 3600000)
     }
 
 
@@ -29,5 +33,8 @@ class MainActivity : BaseActivity() {
         disposables.add(disposable)
     }
 
-
+    private fun registerAlarm(location: String, interval: Long) {
+        NotificationUtil().setNotification(Calendar.getInstance().timeInMillis,
+                location, interval, this@MainActivity)
+    }
 }
