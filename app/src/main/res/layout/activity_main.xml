@@ -41,6 +41,13 @@
                 android:layout_height="@dimen/advertising_height"
                 tools:layout="@layout/fragment_advertising" />
 
+            <fragment
+                android:id="@+id/intervalFragment"
+                android:name="com.karrel.colloc.ui.IntervalFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/interval_fragment_height"
+                tools:layout="@layout/fragment_interval" />
+
         </LinearLayout>
 
     </ScrollView>
