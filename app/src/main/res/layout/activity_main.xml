@@ -47,6 +47,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/interval_fragment_height"
                 tools:layout="@layout/fragment_interval" />
+            <fragment
+                android:id="@+id/dailyFragment"
+                android:name="com.karrel.colloc.ui.DailyFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_daily" />
 
         </LinearLayout>
 

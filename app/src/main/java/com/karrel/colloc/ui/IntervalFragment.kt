@@ -19,7 +19,7 @@ class IntervalFragment : Fragment() {
     private lateinit var adapter: IntervalAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_current, container, false)
+        return inflater.inflate(R.layout.fragment_interval, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

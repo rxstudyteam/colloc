@@ -9,4 +9,5 @@
     <string name="current">지금</string>
     <string name="advertising_title">광고(미세먼지 예보는 광고 밑으로 스크롤하기)</string>
     <string name="interval_text">시간별 예보(좋음, 보통, 나쁨, 매우나쁨)</string>
+    <string name="daily_title_text">일별 예보(좋음, 보통, 나쁨, 매우나쁨)</string>
 </resources>
