@@ -6,4 +6,6 @@
     <dimen name="text_size_4">16sp</dimen>
     <dimen name="text_size_5">14sp</dimen>
     <dimen name="text_size_6">12sp</dimen>
+    <dimen name="current_fragment_height">142dp</dimen>
+    <dimen name="total_fragment_height">450dp</dimen>
 </resources>

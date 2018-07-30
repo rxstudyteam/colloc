@@ -9,6 +9,8 @@ import com.karrel.colloc.base.BaseActivity
 import com.karrel.colloc.loadGlobalTime.NaverGlobalAPIProvider
 import com.karrel.colloc.viewmodel.MainViewmodel
 import com.karrel.colloc.viewmodel.MainViewmodelImpl
+import io.reactivex.Observable
+import java.util.concurrent.TimeUnit
 
 private const val TAG = "dlwlrma"
 
@@ -26,6 +28,15 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         Toast.makeText(this, "Receive message!", Toast.LENGTH_LONG).show()
         setupViemodelEvents()
+        setupDummyData()
+    }
+
+    private fun setupDummyData() {
+        Observable.timer(2, TimeUnit.SECONDS)
+                .subscribe {
+                    viewModel.input.setLocation("광진구 중곡 1동")
+                    viewModel.input.setTime("2018-07-29 07:15 PM")
+                }
     }
 
     override val initView: () -> Unit = {

@@ -21,11 +21,17 @@ class TotalFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupButtonsEvents()
+        setupObservableEvents()
+    }
+
+    private fun setupObservableEvents() {
+        viewModel.output.locationObservable().subscribe { curLocationMini.text = it }
+        viewModel.output.timeObservable().subscribe { time.text = it }
     }
 
     private fun setupButtonsEvents() {
         screenShare.setOnClickListener { viewModel.input.scrrenShare() }
-        showForecast.setOnClickListener {  viewModel.input.showForecast()}
+        showForecast.setOnClickListener { viewModel.input.showForecast() }
     }
 
 }

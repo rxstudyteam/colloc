@@ -8,8 +8,18 @@ object MainViewmodelImpl : MainViewmodel {
     override val output: MainViewmodel.Output get() = Output()
 
     val toastObservable = PublishSubject.create<String>()
+    val locationObservable = PublishSubject.create<String>()
+    val timeObservable = PublishSubject.create<String>()
 
     class Input : MainViewmodel.Input {
+        override fun setTime(s: String) {
+            timeObservable.onNext("($s)")
+        }
+
+        override fun setLocation(s: String) {
+            locationObservable.onNext(s)
+        }
+
         override fun showForecast() {
             toastObservable.onNext("clicked showForecast")
         }
@@ -21,6 +31,8 @@ object MainViewmodelImpl : MainViewmodel {
 
     class Output : MainViewmodel.Output {
         override fun toastObservable() = toastObservable.observeOn(AndroidSchedulers.mainThread())!!
+        override fun locationObservable() = locationObservable.observeOn(AndroidSchedulers.mainThread())!!
+        override fun timeObservable() = timeObservable.observeOn(AndroidSchedulers.mainThread())!!
     }
 
 }

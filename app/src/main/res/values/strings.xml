@@ -6,4 +6,5 @@
     <string name="current_loc">현재위치</string>
     <string name="screen_share">화면 공유</string>
     <string name="show_forecast">예보 보기</string>
+    <string name="current">지금</string>
 </resources>
