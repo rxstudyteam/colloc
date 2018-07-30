@@ -7,6 +7,7 @@ interface MainViewmodel {
     val output: Output
 
     interface Input {
+
         fun scrrenShare()
         fun showForecast()
         fun setLocation(s: String)
@@ -14,13 +15,15 @@ interface MainViewmodel {
         fun showAdvertising()
         fun setTitleStatus(s: String)
         fun setStatus(s: String)
+        fun setCurrantLocation(b: Boolean)
     }
 
-    interface Output{
-        fun toastObservable() : Observable<String>
+    interface Output {
+        fun toastObservable(): Observable<String>
         fun locationObservable(): Observable<String>
         fun timeObservable(): Observable<String>
         fun titlStatusObservable(): Observable<String>
         fun statusObservable(): Observable<String>
+        fun currentLocationObservable(): Observable<Boolean>
     }
 }

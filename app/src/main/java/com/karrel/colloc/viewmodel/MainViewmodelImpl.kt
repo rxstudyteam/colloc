@@ -3,7 +3,7 @@ package com.karrel.colloc.viewmodel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.PublishSubject
 
-object MainViewmodelImpl : MainViewmodel {
+class MainViewmodelImpl : MainViewmodel {
     override val input: MainViewmodel.Input get() = Input()
     override val output: MainViewmodel.Output get() = Output()
 
@@ -12,8 +12,13 @@ object MainViewmodelImpl : MainViewmodel {
     val timeObservable = PublishSubject.create<String>()
     val titlStatusObservable = PublishSubject.create<String>()
     val statusObservable = PublishSubject.create<String>()
+    val currentLocationObservable = PublishSubject.create<Boolean>()
 
-    class Input : MainViewmodel.Input {
+    inner class Input : MainViewmodel.Input {
+        override fun setCurrantLocation(b: Boolean) {
+            currentLocationObservable.onNext(b)
+        }
+
         override fun setTitleStatus(s: String) {
             titlStatusObservable.onNext(s)
         }
@@ -43,12 +48,13 @@ object MainViewmodelImpl : MainViewmodel {
         }
     }
 
-    class Output : MainViewmodel.Output {
+    inner class Output : MainViewmodel.Output {
         override fun toastObservable() = toastObservable.observeOn(AndroidSchedulers.mainThread())!!
         override fun locationObservable() = locationObservable.observeOn(AndroidSchedulers.mainThread())!!
         override fun timeObservable() = timeObservable.observeOn(AndroidSchedulers.mainThread())!!
         override fun titlStatusObservable() = titlStatusObservable.observeOn(AndroidSchedulers.mainThread())!!
         override fun statusObservable() = statusObservable.observeOn(AndroidSchedulers.mainThread())!!
+        override fun currentLocationObservable() = currentLocationObservable.observeOn(AndroidSchedulers.mainThread())!!
     }
 
 }

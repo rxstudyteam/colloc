@@ -9,13 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.karrel.colloc.R
 import com.karrel.colloc.viewmodel.MainViewmodel
-import com.karrel.colloc.viewmodel.MainViewmodelImpl
 import kotlinx.android.synthetic.main.fragment_current.*
 
 
-class IntervalFragment : Fragment() {
+class IntervalFragment : Fragment() , Viewmodelable {
+    private lateinit var viewModel: MainViewmodel
 
-    val viewModel: MainViewmodel = MainViewmodelImpl
+    override fun setViewmodel(viewmodel: MainViewmodel) {
+        this.viewModel = viewModel
+    }
+
     private lateinit var adapter: IntervalAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

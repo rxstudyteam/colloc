@@ -8,10 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.karrel.colloc.R
+import com.karrel.colloc.viewmodel.MainViewmodel
 import kotlinx.android.synthetic.main.fragment_current.*
 
 
-class DailyFragment : Fragment() {
+class DailyFragment : Fragment() , Viewmodelable {
+    private lateinit var viewModel: MainViewmodel
+
+    override fun setViewmodel(viewmodel: MainViewmodel) {
+        this.viewModel = viewModel
+    }
 
     private lateinit var adapter: DailyAdapter
 

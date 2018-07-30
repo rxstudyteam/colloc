@@ -8,13 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.karrel.colloc.R
-import com.karrel.colloc.viewmodel.MainViewmodelImpl
+import com.karrel.colloc.viewmodel.MainViewmodel
 import kotlinx.android.synthetic.main.fragment_current.*
 
 
-class CurrentFragment : Fragment() {
+class CurrentFragment : Fragment() , Viewmodelable {
+    private lateinit var viewModel: MainViewmodel
 
-    val viewModel = MainViewmodelImpl
+    override fun setViewmodel(viewmodel: MainViewmodel) {
+        this.viewModel = viewModel
+    }
+
     private lateinit var adapter: CurrentAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
