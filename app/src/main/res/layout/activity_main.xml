@@ -47,12 +47,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/interval_fragment_height"
                 tools:layout="@layout/fragment_interval" />
+
             <fragment
                 android:id="@+id/dailyFragment"
                 android:name="com.karrel.colloc.ui.DailyFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:layout="@layout/fragment_daily" />
+
+            <fragment
+                android:id="@+id/detailFragment"
+                android:name="com.karrel.colloc.ui.DetailFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_detail" />
+
+            <fragment
+                android:id="@+id/bottomAdvertisingFragment"
+                android:name="com.karrel.colloc.ui.BottomAdvertisingFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_advertising_height"
+                tools:layout="@layout/fragment_bottom_advertising" />
 
         </LinearLayout>
 
