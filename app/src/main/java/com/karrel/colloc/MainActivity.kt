@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.karrel.colloc.base.BaseActivity
-import com.karrel.colloc.loadGlobalTime.NaverGlobalAPIProvider
+import com.karrel.colloc.api.loadGlobalTime.NaverGlobalAPIProvider
 import com.karrel.colloc.notification.NotificationUtil
 import java.util.*
 

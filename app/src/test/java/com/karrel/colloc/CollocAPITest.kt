@@ -1,6 +1,6 @@
 package com.karrel.colloc
 
-import com.karrel.colloc.loadGlobalTime.NaverGlobalAPIProvider
+import com.karrel.colloc.api.loadGlobalTime.NaverGlobalAPIProvider
 import io.reactivex.schedulers.Schedulers
 import org.junit.Assert.assertEquals
 import org.junit.jupiter.api.DisplayName
