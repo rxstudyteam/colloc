@@ -18,76 +18,14 @@ import com.karrel.colloc.ui.interval.IntervalPartView
 import com.karrel.colloc.ui.total.TotalPartView
 import com.karrel.colloc.viewmodel.MainViewmodel
 import com.karrel.colloc.viewmodel.MainViewmodelImpl
+import karrel.com.mvvmsample.extensions.plusAssign
 import kotlinx.android.synthetic.main.fragment_main.*
 
-private const val ARG_PARAM_IS_CUR_LOC = "param1"
-private const val ARG_PARAM_LOC_NAME = "param2"
+private const val ARG_PARAM_IS_CUR_LOC = "is current location"
+private const val ARG_PARAM_LOC_NAME = "location"
 
 
 class MainFragment : Fragment() {
-
-    private val viewModel: MainViewmodel = MainViewmodelImpl()
-    private var toast: Toast? = null
-
-    private var isCurLocation: Boolean = false
-    private var locationName: String? = null
-
-    private val disposable = FragmentDisposable()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            isCurLocation = it.getBoolean(ARG_PARAM_IS_CUR_LOC)
-            locationName = it.getString(ARG_PARAM_LOC_NAME)
-        }
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        addPartViews()
-        setupDummyData()
-        setupViemodelEvents()
-    }
-
-    private fun addPartViews() {
-        println("addPartViews")
-        partGroupForm.addView(TotalPartView(context, viewModel, disposable))
-        partGroupForm.addView(CurrentPartView(context, viewModel, disposable))
-        partGroupForm.addView(AdvertisingPartView(context, viewModel, disposable))
-        partGroupForm.addView(IntervalPartView(context, viewModel, disposable))
-        partGroupForm.addView(DailyPartView(context, viewModel, disposable))
-        partGroupForm.addView(DetailPartView(context, viewModel, disposable))
-        partGroupForm.addView(BottomAdvertisingPartView(context, viewModel, disposable))
-    }
-
-    private fun setupDummyData() {
-        viewModel.input.setCurrantLocation(isCurLocation)
-
-        locationName?.let { viewModel.input.setLocation(it) }
-        viewModel.input.setTime("2018-07-29 07:15 PM")
-        viewModel.input.setTitleStatus("좋음")
-        viewModel.input.setStatus("좋은 공기 많이 마시세요~")
-    }
-
-    private fun setupViemodelEvents() {
-        viewModel.output.toastObservable().subscribe { showToast(it) }
-    }
-
-    private fun showToast(message: String?) {
-        if (toast == null) {
-            toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
-            toast?.setGravity(Gravity.CENTER, 0, 0)
-        } else {
-            toast?.setText(message)
-        }
-
-        toast?.show()
-    }
 
     companion object {
         @JvmStatic
@@ -100,14 +38,59 @@ class MainFragment : Fragment() {
                 }
     }
 
+    private val viewModel: MainViewmodel = MainViewmodelImpl()
+    private var isCurLocation: Boolean = false // 현재위치 플러그
+    private var location: String? = null // 위치 정보
+
+    private val disposable = FragmentDisposable()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setupArguments()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_main, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        addPartViews()
+        setupObservableEvents()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.input.requestWeatherData(location)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        println("onDestroyView")
         disposable.clear()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        println("onDestroy")
+    private fun setupArguments() {
+        arguments?.let {
+            isCurLocation = it.getBoolean(ARG_PARAM_IS_CUR_LOC)
+            location = it.getString(ARG_PARAM_LOC_NAME)
+        }
     }
+
+    private fun addPartViews() {
+        partGroupForm.addView(TotalPartView(context, viewModel, disposable))
+        partGroupForm.addView(CurrentPartView(context, viewModel, disposable))
+        partGroupForm.addView(AdvertisingPartView(context, viewModel, disposable))
+        partGroupForm.addView(IntervalPartView(context, viewModel, disposable))
+        partGroupForm.addView(DailyPartView(context, viewModel, disposable))
+        partGroupForm.addView(DetailPartView(context, viewModel, disposable))
+        partGroupForm.addView(BottomAdvertisingPartView(context, viewModel, disposable))
+    }
+
+    private fun setupObservableEvents() {
+        disposable += viewModel.output.toastObservable().subscribe { showToast(it) }
+    }
+
+    private fun showToast(message: String?) = Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
 }

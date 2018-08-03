@@ -7,6 +7,7 @@ import com.karrel.colloc.R
 import com.karrel.colloc.extensions.FragmentDisposable
 import com.karrel.colloc.ui.PartView
 import com.karrel.colloc.viewmodel.MainViewmodel
+import karrel.com.mvvmsample.extensions.plusAssign
 import kotlinx.android.synthetic.main.part_daily.view.*
 
 
@@ -16,7 +17,13 @@ class DailyPartView(context: Context?, viewModel: MainViewmodel, disposable: Fra
 
     init {
         setupRecyclerView()
-        setupTestData()
+    }
+
+    override fun setupObservableEvents() {
+        super.setupObservableEvents()
+        disposable += viewModel.output.dailyDataObservable().subscribe {
+            setupTestData()
+        }
     }
 
     private fun setupTestData() {

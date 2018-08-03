@@ -5,14 +5,20 @@ import com.karrel.colloc.R
 import com.karrel.colloc.extensions.FragmentDisposable
 import com.karrel.colloc.ui.PartView
 import com.karrel.colloc.viewmodel.MainViewmodel
+import karrel.com.mvvmsample.extensions.plusAssign
 import kotlinx.android.synthetic.main.part_bottom_advertising.view.*
 
 
 class BottomAdvertisingPartView(context: Context?, viewModel: MainViewmodel, disposable: FragmentDisposable) : PartView(context, viewModel, disposable) {
     override fun layoutRes(): Int = R.layout.part_bottom_advertising
 
-    override fun  setupButtonsEvents() {
+    override fun setupButtonsEvents() {
         advertising.setOnClickListener { viewModel.input.showAdvertising() }
     }
 
+    override fun setupObservableEvents() {
+        disposable += viewModel.output.bottomAdvertisingObservable().subscribe {
+            // 광고설정
+        }
+    }
 }

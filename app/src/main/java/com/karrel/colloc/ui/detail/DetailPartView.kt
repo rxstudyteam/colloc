@@ -7,6 +7,7 @@ import com.karrel.colloc.R
 import com.karrel.colloc.extensions.FragmentDisposable
 import com.karrel.colloc.ui.PartView
 import com.karrel.colloc.viewmodel.MainViewmodel
+import karrel.com.mvvmsample.extensions.plusAssign
 import kotlinx.android.synthetic.main.part_detail.view.*
 
 
@@ -17,7 +18,12 @@ class DetailPartView(context: Context?, viewModel: MainViewmodel, disposable: Fr
 
     init {
         setupRecyclerView()
-        setupTestData()
+    }
+
+    override fun setupObservableEvents() {
+        disposable += viewModel.output.detailDataObservable().subscribe {
+            setupTestData()
+        }
     }
 
     private fun setupTestData() {

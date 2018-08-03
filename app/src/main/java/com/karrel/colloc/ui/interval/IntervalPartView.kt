@@ -7,6 +7,7 @@ import com.karrel.colloc.R
 import com.karrel.colloc.extensions.FragmentDisposable
 import com.karrel.colloc.ui.PartView
 import com.karrel.colloc.viewmodel.MainViewmodel
+import karrel.com.mvvmsample.extensions.plusAssign
 import kotlinx.android.synthetic.main.part_interval.view.*
 
 
@@ -18,10 +19,15 @@ class IntervalPartView(context: Context?, viewModel: MainViewmodel, disposable: 
 
     init {
         setupRecyclerView()
-        setupTestCurrentData()
     }
 
-    private fun setupTestCurrentData() {
+    override fun setupObservableEvents() {
+        disposable += viewModel.output.intervalDataObservable().subscribe {
+            setupTestIntervalData()
+        }
+    }
+
+    private fun setupTestIntervalData() {
         adapter.initItem()
         adapter.addItem(IntervalAdapter.IntervalItem("오후 8시", R.drawable.smile, "좋음"))
         adapter.addItem(IntervalAdapter.IntervalItem("오후 9시", R.drawable.smile, "좋음"))
