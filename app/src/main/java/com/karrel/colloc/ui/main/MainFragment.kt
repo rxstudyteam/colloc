@@ -1,4 +1,4 @@
-package com.karrel.colloc.ui
+package com.karrel.colloc.ui.main
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,6 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.karrel.colloc.R
+import com.karrel.colloc.ui.advertising.AdvertisingPartView
+import com.karrel.colloc.ui.bottom_advertising.BottomAdvertisingPartView
+import com.karrel.colloc.ui.current.CurrentPartView
+import com.karrel.colloc.ui.daily.DailyPartView
+import com.karrel.colloc.ui.detail.DetailPartView
+import com.karrel.colloc.ui.interval.IntervalPartView
+import com.karrel.colloc.ui.total.TotalPartView
 import com.karrel.colloc.viewmodel.MainViewmodel
 import com.karrel.colloc.viewmodel.MainViewmodelImpl
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -46,13 +53,13 @@ class MainFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        (totalFragment as? Viewmodelable)?.setViewmodel(viewModel)
-        (currentFragment as? Viewmodelable)?.setViewmodel(viewModel)
-        (advertisingFragment as? Viewmodelable)?.setViewmodel(viewModel)
-        (intervalFragment as? Viewmodelable)?.setViewmodel(viewModel)
-        (dailyFragment as? Viewmodelable)?.setViewmodel(viewModel)
-        (detailFragment as? Viewmodelable)?.setViewmodel(viewModel)
-        (bottomAdvertisingFragment as? Viewmodelable)?.setViewmodel(viewModel)
+        partGroupForm.addView(TotalPartView(context, viewModel))
+        partGroupForm.addView(CurrentPartView(context, viewModel))
+        partGroupForm.addView(AdvertisingPartView(context, viewModel))
+        partGroupForm.addView(IntervalPartView(context, viewModel))
+        partGroupForm.addView(DailyPartView(context, viewModel))
+        partGroupForm.addView(DetailPartView(context, viewModel))
+        partGroupForm.addView(BottomAdvertisingPartView(context, viewModel))
     }
 
     private fun setupDummyData() {

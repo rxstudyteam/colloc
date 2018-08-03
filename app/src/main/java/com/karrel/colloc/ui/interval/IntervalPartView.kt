@@ -1,35 +1,22 @@
-package com.karrel.colloc.ui
+package com.karrel.colloc.ui.interval
 
-import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.karrel.colloc.R
+import com.karrel.colloc.ui.PartView
 import com.karrel.colloc.viewmodel.MainViewmodel
-import kotlinx.android.synthetic.main.fragment_current.*
+import kotlinx.android.synthetic.main.part_interval.view.*
 
 
-class IntervalFragment : Fragment() , Viewmodelable {
-    private lateinit var viewModel: MainViewmodel
+class IntervalPartView(context: Context?, viewModel: MainViewmodel) : PartView(context, viewModel) {
 
-    override fun setViewmodel(viewmodel: MainViewmodel) {
-        this.viewModel = viewModel
-    }
-
+    override fun layoutRes(): Int = R.layout.part_interval
     private lateinit var adapter: IntervalAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_interval, container, false)
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    init {
         setupRecyclerView()
-        setupButtonsEvents()
         setupTestCurrentData()
     }
 
@@ -46,12 +33,8 @@ class IntervalFragment : Fragment() , Viewmodelable {
     }
 
     private fun setupRecyclerView() {
-        recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         adapter = IntervalAdapter()
         recyclerView.adapter = adapter
     }
-
-    private fun setupButtonsEvents() {
-    }
-
 }

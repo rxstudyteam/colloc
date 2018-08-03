@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/interval_fragment_height"
+    android:layout_height="@dimen/advertising_height"
     tools:background="@color/bg_nice"
-    tools:context=".ui.IntervalFragment">
+    tools:context=".ui.advertising.AdvertisingPartView">
 
     <TextView
         android:id="@+id/titleText"
@@ -15,25 +15,29 @@
         android:background="#00579C"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:text="@string/current"
+        android:text="@string/advertising_title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <ImageView
+        android:id="@+id/advertising"
         android:layout_width="0dp"
-        android:layout_height="116dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/advertising"
+        app:layout_constraintBottom_toTopOf="@+id/bottomLine"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <View
+        android:id="@+id/bottomLine"
         android:layout_width="0dp"
         android:layout_height="8dp"
         android:background="@color/bottom_line_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

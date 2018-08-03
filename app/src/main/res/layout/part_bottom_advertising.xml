@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/bottom_advertising_height"
     tools:background="@color/bg_nice"
-    tools:context=".ui.AdvertisingFragment">
+    tools:context=".ui.advertising.AdvertisingPartView">
 
 
     <ImageView

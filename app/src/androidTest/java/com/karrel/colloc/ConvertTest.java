@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.karrel.colloc.ui.MainActivity;
+import com.karrel.colloc.ui.main.MainActivity;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

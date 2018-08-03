@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/total_fragment_height"
     tools:background="@color/bg_nice"
-    tools:context=".ui.TotalFragment">
+    tools:context=".ui.total.TotalPartView">
 
     <TextView
         android:id="@+id/curLocation"

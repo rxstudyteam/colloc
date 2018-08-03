@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:background="@color/bg_nice"
-    tools:context=".ui.MainFragment">
+    tools:context=".ui.main.MainFragment">
 
     <ScrollView
         android:layout_width="0dp"
@@ -16,60 +16,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/partGroupForm"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"/>
 
-            <fragment
-                android:id="@+id/totalFragment"
-                android:name="com.karrel.colloc.ui.TotalFragment"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/total_fragment_height"
-                tools:layout="@layout/fragment_total" />
-
-            <fragment
-                android:id="@+id/currentFragment"
-                android:name="com.karrel.colloc.ui.CurrentFragment"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/current_fragment_height"
-                tools:layout="@layout/fragment_current" />
-
-            <fragment
-                android:id="@+id/advertisingFragment"
-                android:name="com.karrel.colloc.ui.AdvertisingFragment"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/advertising_height"
-                tools:layout="@layout/fragment_advertising" />
-
-            <fragment
-                android:id="@+id/intervalFragment"
-                android:name="com.karrel.colloc.ui.IntervalFragment"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/interval_fragment_height"
-                tools:layout="@layout/fragment_interval" />
-
-            <fragment
-                android:id="@+id/dailyFragment"
-                android:name="com.karrel.colloc.ui.DailyFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_daily" />
-
-            <fragment
-                android:id="@+id/detailFragment"
-                android:name="com.karrel.colloc.ui.DetailFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_detail" />
-
-            <fragment
-                android:id="@+id/bottomAdvertisingFragment"
-                android:name="com.karrel.colloc.ui.BottomAdvertisingFragment"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/bottom_advertising_height"
-                tools:layout="@layout/fragment_bottom_advertising" />
-
-        </LinearLayout>
 
     </ScrollView>
 

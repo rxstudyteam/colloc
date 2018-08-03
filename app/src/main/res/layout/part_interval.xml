@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/interval_fragment_height"
     tools:background="@color/bg_nice"
-    tools:context=".ui.DetailFragment">
+    tools:context=".ui.total.TotalPartView">
 
     <TextView
         android:id="@+id/titleText"
@@ -15,7 +15,7 @@
         android:background="#00579C"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:text="@string/detail_title"
+        android:text="@string/interval_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,41 +23,19 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomLine"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <View
-        android:id="@+id/line1"
+        android:id="@+id/bottomLine"
         android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="#4FBEF6"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
-    <TextView
-        android:id="@+id/memo"
-        style="@style/text.size6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/line2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line1"
-        tools:text="콜록은 사용자분과 가장 가까이 위치한, 정상 작동 중인\n측정소의 실시간 정보를 보여드립니다.\n\n본 자료는 한국환공공단과 블라블라블라 쇽쇽쇽 슥슥 샥샥" />
-
-    <View
-        android:id="@+id/line2"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="#4FBEF6"
+        android:layout_height="8dp"
+        android:background="@color/bottom_line_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-
 
 </android.support.constraint.ConstraintLayout>

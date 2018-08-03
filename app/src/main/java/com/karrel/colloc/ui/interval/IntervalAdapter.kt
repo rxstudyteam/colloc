@@ -1,4 +1,4 @@
-package com.karrel.colloc.ui
+package com.karrel.colloc.ui.interval
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -24,7 +24,7 @@ class IntervalAdapter : RecyclerView.Adapter<IntervalAdapter.CurrentViewHolder>(
         holder.setData(itemList[position])
     }
 
-    fun addItem(intervalItem: IntervalAdapter.IntervalItem) {
+    fun addItem(intervalItem: IntervalItem) {
         itemList.add(intervalItem)
         notifyDataSetChanged()
     }
@@ -35,7 +35,7 @@ class IntervalAdapter : RecyclerView.Adapter<IntervalAdapter.CurrentViewHolder>(
 
 
     class CurrentViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        fun setData(item: IntervalAdapter.IntervalItem) {
+        fun setData(item: IntervalItem) {
             itemView.time.text = item.time
             itemView.emoticon.setImageResource(item.emoticon)
             itemView.status.text = item.status

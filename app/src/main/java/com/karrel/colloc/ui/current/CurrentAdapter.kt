@@ -1,4 +1,4 @@
-package com.karrel.colloc.ui
+package com.karrel.colloc.ui.current
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -24,7 +24,7 @@ class CurrentAdapter : RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder>() 
         holder.setData(itemList[position])
     }
 
-    fun addItem(currentItem: CurrentAdapter.CurrentItem) {
+    fun addItem(currentItem: CurrentItem) {
         itemList.add(currentItem)
         notifyDataSetChanged()
     }
@@ -35,7 +35,7 @@ class CurrentAdapter : RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder>() 
 
 
     class CurrentViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        fun setData(item: CurrentAdapter.CurrentItem) {
+        fun setData(item: CurrentItem) {
             itemView.type.text = item.type
             itemView.emoticon.setImageResource(item.emoticon)
             itemView.status.text = item.status

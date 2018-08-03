@@ -1,4 +1,4 @@
-package com.karrel.colloc.ui
+package com.karrel.colloc.ui.main
 
 import android.os.Bundle
 import android.util.Log

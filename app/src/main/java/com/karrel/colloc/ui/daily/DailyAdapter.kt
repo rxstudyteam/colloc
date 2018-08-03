@@ -1,4 +1,4 @@
-package com.karrel.colloc.ui
+package com.karrel.colloc.ui.daily
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -40,7 +40,7 @@ class DailyAdapter : RecyclerView.Adapter<DailyAdapter.ViewHolder>() {
         }
     }
 
-    fun addItem(dailyItem: DailyAdapter.Item) {
+    fun addItem(dailyItem: Item) {
         itemList.add(dailyItem)
         notifyDataSetChanged()
     }
@@ -55,7 +55,7 @@ class DailyAdapter : RecyclerView.Adapter<DailyAdapter.ViewHolder>() {
     }
 
     class DailyViewHolder(itemView: View?) : ViewHolder(itemView) {
-        override fun setData(item: DailyAdapter.Item) {
+        override fun setData(item: Item) {
             itemView.`when`.text = item.time
             itemView.emoticon.setImageResource(item.emoticon)
             itemView.status.text = item.status

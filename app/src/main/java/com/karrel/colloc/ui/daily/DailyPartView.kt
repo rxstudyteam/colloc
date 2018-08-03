@@ -1,33 +1,19 @@
-package com.karrel.colloc.ui
+package com.karrel.colloc.ui.daily
 
-import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.karrel.colloc.R
+import com.karrel.colloc.ui.PartView
 import com.karrel.colloc.viewmodel.MainViewmodel
-import kotlinx.android.synthetic.main.fragment_current.*
+import kotlinx.android.synthetic.main.part_daily.view.*
 
 
-class DailyFragment : Fragment() , Viewmodelable {
-    private lateinit var viewModel: MainViewmodel
-
-    override fun setViewmodel(viewmodel: MainViewmodel) {
-        this.viewModel = viewModel
-    }
-
+class DailyPartView(context: Context?, viewModel: MainViewmodel) : PartView(context, viewModel) {
+    override fun layoutRes(): Int = R.layout.part_daily
     private lateinit var adapter: DailyAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_daily, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    init {
         setupRecyclerView()
         setupTestData()
     }
@@ -53,7 +39,7 @@ class DailyFragment : Fragment() , Viewmodelable {
     }
 
     private fun setupRecyclerView() {
-        recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         adapter = DailyAdapter()
         recyclerView.adapter = adapter
     }

@@ -1,4 +1,4 @@
-package com.karrel.colloc.ui
+package com.karrel.colloc.ui.detail
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

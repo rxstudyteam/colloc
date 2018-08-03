@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/interval_fragment_height"
+    android:layout_height="wrap_content"
     tools:background="@color/bg_nice"
-    tools:context=".ui.TotalFragment">
+    tools:context=".ui.interval.IntervalPartView">
 
     <TextView
         android:id="@+id/titleText"
@@ -15,27 +15,26 @@
         android:background="#00579C"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:text="@string/interval_text"
+        android:text="@string/daily_title_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="4dp"
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomLine"
+        android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <View
-        android:id="@+id/bottomLine"
         android:layout_width="0dp"
         android:layout_height="8dp"
         android:background="@color/bottom_line_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
 </android.support.constraint.ConstraintLayout>
