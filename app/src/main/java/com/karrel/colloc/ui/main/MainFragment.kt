@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.karrel.colloc.R
+import com.karrel.colloc.extensions.FragmentDisposable
 import com.karrel.colloc.ui.advertising.AdvertisingPartView
 import com.karrel.colloc.ui.bottom_advertising.BottomAdvertisingPartView
 import com.karrel.colloc.ui.current.CurrentPartView
@@ -29,8 +30,9 @@ class MainFragment : Fragment() {
     private var toast: Toast? = null
 
     private var isCurLocation: Boolean = false
-
     private var locationName: String? = null
+
+    private val disposable = FragmentDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,19 +49,20 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupViewModel()
+        addPartViews()
         setupDummyData()
         setupViemodelEvents()
     }
 
-    private fun setupViewModel() {
-        partGroupForm.addView(TotalPartView(context, viewModel))
-        partGroupForm.addView(CurrentPartView(context, viewModel))
-        partGroupForm.addView(AdvertisingPartView(context, viewModel))
-        partGroupForm.addView(IntervalPartView(context, viewModel))
-        partGroupForm.addView(DailyPartView(context, viewModel))
-        partGroupForm.addView(DetailPartView(context, viewModel))
-        partGroupForm.addView(BottomAdvertisingPartView(context, viewModel))
+    private fun addPartViews() {
+        println("addPartViews")
+        partGroupForm.addView(TotalPartView(context, viewModel, disposable))
+        partGroupForm.addView(CurrentPartView(context, viewModel, disposable))
+        partGroupForm.addView(AdvertisingPartView(context, viewModel, disposable))
+        partGroupForm.addView(IntervalPartView(context, viewModel, disposable))
+        partGroupForm.addView(DailyPartView(context, viewModel, disposable))
+        partGroupForm.addView(DetailPartView(context, viewModel, disposable))
+        partGroupForm.addView(BottomAdvertisingPartView(context, viewModel, disposable))
     }
 
     private fun setupDummyData() {
@@ -95,5 +98,16 @@ class MainFragment : Fragment() {
                         putString(ARG_PARAM_LOC_NAME, location)
                     }
                 }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        println("onDestroyView")
+        disposable.clear()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        println("onDestroy")
     }
 }

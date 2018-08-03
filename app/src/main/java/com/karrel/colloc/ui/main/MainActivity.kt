@@ -29,6 +29,8 @@ class MainActivity : BaseActivity() {
         adapter.addFragment(MainFragment.newInstance(true))
         adapter.addFragment(MainFragment.newInstance(location = "강릉시 강문동"))
         adapter.addFragment(MainFragment.newInstance(location = "가평군 복면"))
+        adapter.addFragment(MainFragment.newInstance(location = "청주시 신봉동"))
+        adapter.addFragment(MainFragment.newInstance(location = "미국 LA"))
 
     }
 

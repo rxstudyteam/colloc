@@ -4,12 +4,13 @@ import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.karrel.colloc.R
+import com.karrel.colloc.extensions.FragmentDisposable
 import com.karrel.colloc.ui.PartView
 import com.karrel.colloc.viewmodel.MainViewmodel
 import kotlinx.android.synthetic.main.part_interval.view.*
 
 
-class IntervalPartView(context: Context?, viewModel: MainViewmodel) : PartView(context, viewModel) {
+class IntervalPartView(context: Context?, viewModel: MainViewmodel, disposable: FragmentDisposable) : PartView(context, viewModel, disposable) {
 
     override fun layoutRes(): Int = R.layout.part_interval
     private lateinit var adapter: IntervalAdapter
