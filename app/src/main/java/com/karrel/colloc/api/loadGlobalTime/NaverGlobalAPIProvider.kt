@@ -1,32 +1,26 @@
-package com.karrel.colloc.loadGlobalTime
+package com.karrel.colloc.api.loadGlobalTime
 
 import com.google.gson.Gson
-import com.karrel.colloc.loadGlobalTime.model.ErrorInfo
+import com.karrel.colloc.api.CollocRetrofitClient
+import com.karrel.colloc.api.loadGlobalTime.model.ErrorInfo
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import org.simpleframework.xml.core.Persister
 import retrofit2.HttpException
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 
 object NaverGlobalAPIProvider {
 
     private const val BASE_URL = "https://global.apis.naver.com/";
 
-    private val okHttpClient: OkHttpClient = OkHttpClient.Builder().apply {
-        addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
-    }.build()
+    private val apis: NaverGlobalAPIService
 
-    private val apis = Retrofit.Builder().apply {
-        baseUrl(BASE_URL).client(okHttpClient)
-        addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-    }.build().create(NaverGlobalAPIService::class.java)
+    init {
+        apis = CollocRetrofitClient.create(BASE_URL, NaverGlobalAPIService::class.java)
+    }
 
     //NOTE sort 는 쿼리 테스트를 위하여 추가 한 것이라 리스폰스에 영항이 없음.
     //NOTE param 에 currentTime 이외의 값이 들어오면 json으로 리스폰스가 들어옵니다.

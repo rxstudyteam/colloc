@@ -1,4 +1,4 @@
-package com.karrel.colloc.loadGlobalTime
+package com.karrel.colloc.api.loadGlobalTime
 
 import io.reactivex.Observable
 import okhttp3.ResponseBody

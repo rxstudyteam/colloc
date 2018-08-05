@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.karrel.colloc.R
+import com.karrel.colloc.api.loadGlobalTime.NaverGlobalAPIProvider
 import com.karrel.colloc.base.BaseActivity
-import com.karrel.colloc.loadGlobalTime.NaverGlobalAPIProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val TAG = "dlwlrma"
@@ -31,7 +31,6 @@ class MainActivity : BaseActivity() {
         adapter.addFragment(MainFragment.newInstance(location = "가평군 복면"))
         adapter.addFragment(MainFragment.newInstance(location = "청주시 신봉동"))
         adapter.addFragment(MainFragment.newInstance(location = "미국 LA"))
-
     }
 
 
@@ -42,8 +41,5 @@ class MainActivity : BaseActivity() {
         )
         disposables.add(disposable)
     }
-
-
-
 
 }
