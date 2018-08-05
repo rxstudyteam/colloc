@@ -23,6 +23,7 @@ class MainViewmodelImpl : MainViewmodel {
     val intervalDataObservable = PublishSubject.create<String>()
 
     inner class Input : MainViewmodel.Input {
+
         override fun requestWeatherData(location: String?) {
             // 더미데이터 발행
             location?.let { setLocation(it) }

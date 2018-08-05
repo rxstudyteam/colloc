@@ -9,8 +9,8 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.support.v4.app.JobIntentService
 import android.widget.RemoteViews
-import com.karrel.colloc.MainActivity
 import com.karrel.colloc.R
+import com.karrel.colloc.ui.main.MainActivity
 
 class AlarmService : JobIntentService() {
 
