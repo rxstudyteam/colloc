@@ -6,6 +6,8 @@ import android.widget.Toast
 import com.karrel.colloc.base.BaseActivity
 import com.karrel.colloc.api.loadGlobalTime.NaverGlobalAPIProvider
 import com.karrel.colloc.notification.NotificationUtil
+import com.karrel.colloc.ui.MainFragment
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 private const val TAG = "dlwlrma"
@@ -26,6 +28,9 @@ class MainActivity : BaseActivity() {
 
 
     override val initView: () -> Unit = {
+
+        supportFragmentManager.beginTransaction().replace(R.id.container, MainFragment.newInstance()).commit()
+
         val disposable = NaverGlobalAPIProvider.getCurrentTime(
                 onLoaded = { time -> Log.d(TAG, "Load Global Time : $time") },
                 onError = { info -> Log.d(TAG, "Load Fail :  $info") }
