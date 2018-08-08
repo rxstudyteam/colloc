@@ -21,4 +21,6 @@ abstract class PartView(context: Context?, val viewModel: MainViewmodel, val dis
 
     abstract fun layoutRes(): Int
 
+    // comment
+
 }
