@@ -20,7 +20,5 @@ abstract class PartView(context: Context?, val viewModel: MainViewmodel, val dis
     protected open fun setupObservableEvents() {}
 
     abstract fun layoutRes(): Int
-
-    // comment
-
+    
 }
