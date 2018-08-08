@@ -1,9 +1,9 @@
 package com.karrel.colloc.main
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.LayoutInflater
@@ -18,6 +18,7 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         bb = DataBindingUtil.inflate(inflater, R.layout.colloc_main_fr, container, false)
+        bb.vm = ViewModelProviders.of(this).get(CollocMainViewModel::class.java)
         return bb.root
     }
 
@@ -33,7 +34,7 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 android.R.color.holo_green_dark,
                 android.R.color.holo_orange_dark,
                 android.R.color.holo_red_dark)
-        bb.vm = ViewModelProviders.of(this).get(CollocMainViewModel::class.java)
+
     }
 
     private fun onLoad() {
@@ -42,7 +43,13 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     //-------------------------------------------------------------------------------------
     override fun onRefresh() {
-        Handler().postDelayed({ swipe_layer.isRefreshing = false }, 5000)
+//        Handler().postDelayed({ swipe_layer.isRefreshing = false }, 5000)
+        val long = 127.029475
+        val lan = 37.496690
+        bb.vm!!.getAirData(long, lan).observe(this, Observer {
+            it.toString()
+        })
+        swipe_layer.isRefreshing = false
     }
 }
 
