@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvAlarmSettingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="알람 끄기/켜기"
+        android:textStyle="bold"
+        android:textColor="#00CE86"
+        tools:text="알람 끄기/켜기" />
+
+    <TextView
+        android:id="@+id/tvAlarmSettingSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlarmSettingTitle"
+        android:layout_marginTop="8dp"
+        android:text="알람을 키시면 설정 화면이 나옵니다."
+        tools:text="알람을 키시면 설정 화면이 나옵니다." />
+
+    <Switch
+        android:id="@+id/tbAlarmSettingSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        style="@style/AlarmSettingSwitch" />
+
+
+</android.support.constraint.ConstraintLayout>
