@@ -15,10 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".test.ImageWrapperTestActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".test.ImageWrapperTestActivity" />
 
         <service android:name=".firebase.CollocFirebaseMessagingService">
             <intent-filter>
@@ -26,14 +24,14 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".mainpage.MainPageActivity"
-            android:theme="@style/NoActionBar">
+        <activity android:name=".mainpage.MainPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".alarm.AlarmSettingActivity"></activity>
     </application>
 
 </manifest>
