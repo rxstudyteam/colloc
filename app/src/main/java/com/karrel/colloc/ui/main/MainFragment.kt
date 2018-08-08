@@ -21,11 +21,10 @@ import com.karrel.colloc.viewmodel.MainViewmodelImpl
 import karrel.com.mvvmsample.extensions.plusAssign
 import kotlinx.android.synthetic.main.fragment_main.*
 
-private const val ARG_PARAM_IS_CUR_LOC = "is current location"
-private const val ARG_PARAM_LOC_NAME = "location"
-
 
 class MainFragment : Fragment() {
+    private val ARG_PARAM_IS_CUR_LOC = "is current location"
+    private val ARG_PARAM_LOC_NAME = "location"
 
     companion object {
         @JvmStatic

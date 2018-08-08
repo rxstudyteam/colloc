@@ -8,9 +8,9 @@ import com.karrel.colloc.api.loadGlobalTime.NaverGlobalAPIProvider
 import com.karrel.colloc.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-private const val TAG = "dlwlrma"
 
 class MainActivity : BaseActivity() {
+    private val TAG = "dlwlrma"
 
     override val requestPermissionList: List<String> = listOf("android.permission.ACCESS_FINE_LOCATION")
     override val layoutResID: Int = R.layout.activity_main
