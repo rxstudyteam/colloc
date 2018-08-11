@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:background="#22ff22"
+        android:paddingLeft="20dp"
+        android:text="시간별 예보 (좋음, 보퉁, 나쁨, 매우나쁨)"
+        android:textColor="#333333"
+        android:textSize="11sp" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/hourly_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+</LinearLayout>
