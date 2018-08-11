@@ -17,7 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Notitle"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.main.MainActivity"></activity>
+        <activity android:name=".ui.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <activity android:name=".test.ImageWrapperTestActivity" />
 
@@ -30,11 +36,7 @@
 
         </activity>
         <activity android:name=".mainpage.MainPageActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service

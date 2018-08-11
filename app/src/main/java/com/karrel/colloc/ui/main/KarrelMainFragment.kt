@@ -1,11 +1,7 @@
 package com.karrel.colloc.ui.main
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,16 +21,14 @@ import karrel.com.mvvmsample.extensions.plusAssign
 import kotlinx.android.synthetic.main.fragment_main.*
 
 
-class MainFragment : Fragment() {
-
-    val TAG = this.javaClass.simpleName
-
+class KarrelMainFragment : Fragment() {
     private val ARG_PARAM_IS_CUR_LOC = "is current location"
     private val ARG_PARAM_LOC_NAME = "location"
 
     companion object {
+        @JvmStatic
         fun newInstance(isCurLocation: Boolean = false, location: String = "") =
-                MainFragment().apply {
+                KarrelMainFragment().apply {
                     arguments = Bundle().apply {
                         putBoolean(ARG_PARAM_IS_CUR_LOC, isCurLocation)
                         putString(ARG_PARAM_LOC_NAME, location)
@@ -60,19 +54,12 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        val viewModel = ViewModelProviders.of(this).get(AirViewModel::class.java)
-        viewModel.getAirData().observe(this, Observer { airData -> Log.d(TAG, "getAirData observe $airData") })
-
         addPartViews()
         setupObservableEvents()
-
-
     }
 
     override fun onResume() {
         super.onResume()
-
 
         viewModel.input.requestWeatherData(location)
     }

@@ -17,7 +17,7 @@ class MainViewpagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
         return itemList.size
     }
 
-    fun addFragment(fragment: MainFragment) {
+    fun addFragment(fragment: Fragment) {
         itemList.add(fragment)
         notifyDataSetChanged()
     }

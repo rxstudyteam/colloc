@@ -21,7 +21,7 @@ object DummyAirProvider {
                 })
     }
 
-    fun getAirDataObservable(): Observable<AirData> {
+    private fun getAirDataObservable(): Observable<AirData> {
 
         val overallValue = OverallValue("201030123", 2, "2", "11", "location name")
         val currentValueList = listOf<CurrentValue>(CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"), CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"), CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"), CurrentValue("초미세먼지", 2, "나쁨", "27 ㎍/㎥"), CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"), CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"), CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"))

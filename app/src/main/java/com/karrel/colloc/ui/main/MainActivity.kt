@@ -10,7 +10,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity() {
-    private val TAG = "dlwlrma"
+
+    val TAG = this.javaClass.simpleName
 
     override val requestPermissionList: List<String> = listOf("android.permission.ACCESS_FINE_LOCATION")
     override val layoutResID: Int = R.layout.activity_main

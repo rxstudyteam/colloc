@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:background="@color/bg_nice"
-    tools:context=".ui.main.MainFragment">
+    tools:context=".ui.main.KarrelMainFragment">
 
     <ScrollView
         android:layout_width="0dp"
