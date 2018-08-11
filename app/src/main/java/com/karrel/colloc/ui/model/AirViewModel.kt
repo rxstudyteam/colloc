@@ -1,13 +1,17 @@
-package com.karrel.colloc.ui.main
+package com.karrel.colloc.ui.model
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.karrel.colloc.api.DummyAirProvider
 import com.karrel.colloc.model.airdata.AirData
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.plusAssign
 
 
 class AirViewModel : ViewModel() {
+
+    private val disposables: CompositeDisposable = CompositeDisposable()
     private var airData: MutableLiveData<AirData> = MutableLiveData<AirData>()
 
     init {
@@ -19,7 +23,11 @@ class AirViewModel : ViewModel() {
     }
 
     private fun loadAirData() {
-        val disposable = DummyAirProvider.getAirData(onLoaded = { airData.value = it }, onError = {})
-        // fixme disposable 어디에서 처리할것인가?
+        disposables += DummyAirProvider.getAirData(onLoaded = { airData.value = it }, onError = {})
+    }
+
+    override fun onCleared() {
+        disposables.clear()
+        super.onCleared()
     }
 }

@@ -1,7 +1,6 @@
 package com.karrel.colloc.ui.main
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -18,6 +17,7 @@ import com.karrel.colloc.ui.current.CurrentPartView
 import com.karrel.colloc.ui.daily.DailyPartView
 import com.karrel.colloc.ui.detail.DetailPartView
 import com.karrel.colloc.ui.interval.IntervalPartView
+import com.karrel.colloc.ui.model.AirViewModel
 import com.karrel.colloc.ui.total.TotalPartView
 import com.karrel.colloc.viewmodel.MainViewmodel
 import com.karrel.colloc.viewmodel.MainViewmodelImpl
@@ -61,8 +61,10 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+
         val viewModel = ViewModelProviders.of(this).get(AirViewModel::class.java)
         viewModel.getAirData().observe(this, Observer { airData -> Log.d(TAG, "getAirData observe $airData") })
+
 
         addPartViews()
         setupObservableEvents()
