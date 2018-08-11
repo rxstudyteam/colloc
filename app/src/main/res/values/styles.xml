@@ -74,7 +74,7 @@
         <item name="android:textColor">@color/text_color_1_alpha</item>
     </style>
 
-    <style name="text.size1.alpha" parent="text.size1">
+    <style name="text.size1.alpha" parent="text.size1"/>
 
     <item name="android:textColor">@color/text_color_1_alpha</item>
 

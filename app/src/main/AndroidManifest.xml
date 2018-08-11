@@ -16,8 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Notitle"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.main.MainActivity">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".ui.main.MainActivity"></activity>
+
         <activity android:name=".test.ImageWrapperTestActivity" />
         <service android:name=".firebase.CollocFirebaseMessagingService">
             <intent-filter>
@@ -31,7 +31,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </service>
+        </activity>
 
         <service
             android:name=".notification.AlarmService"
@@ -45,7 +45,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        </activity>
+
         <activity android:name=".alarm.AlarmSettingActivity"></activity>
     </application>
 
