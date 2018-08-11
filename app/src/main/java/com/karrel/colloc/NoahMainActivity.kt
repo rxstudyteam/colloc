@@ -6,13 +6,12 @@ import android.widget.Toast
 import com.karrel.colloc.base.BaseActivity
 import com.karrel.colloc.api.loadGlobalTime.NaverGlobalAPIProvider
 import com.karrel.colloc.notification.NotificationUtil
-import com.karrel.colloc.ui.MainFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.karrel.colloc.ui.NoahMainFragment
 import java.util.*
 
 private const val TAG = "dlwlrma"
 
-class MainActivity : BaseActivity() {
+class NoahMainActivity : BaseActivity() {
 
     override val requestPermissionList: List<String> = listOf("android.permission.ACCESS_FINE_LOCATION")
 
@@ -29,7 +28,7 @@ class MainActivity : BaseActivity() {
 
     override val initView: () -> Unit = {
 
-        supportFragmentManager.beginTransaction().replace(R.id.container, MainFragment.newInstance()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.container, NoahMainFragment.newInstance()).commit()
 
         val disposable = NaverGlobalAPIProvider.getCurrentTime(
                 onLoaded = { time -> Log.d(TAG, "Load Global Time : $time") },
@@ -40,6 +39,6 @@ class MainActivity : BaseActivity() {
 
     private fun registerAlarm(location: String, interval: Long) {
         NotificationUtil().setNotification(Calendar.getInstance().timeInMillis,
-                location, interval, this@MainActivity)
+                location, interval, this@NoahMainActivity)
     }
 }

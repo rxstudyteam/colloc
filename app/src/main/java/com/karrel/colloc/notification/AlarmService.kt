@@ -9,7 +9,7 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.support.v4.app.JobIntentService
 import android.widget.RemoteViews
-import com.karrel.colloc.MainActivity
+import com.karrel.colloc.NoahMainActivity
 import com.karrel.colloc.R
 
 class AlarmService : JobIntentService() {
@@ -33,7 +33,7 @@ class AlarmService : JobIntentService() {
 
         val context = this.applicationContext
         var notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val notifyIntent = Intent(this, MainActivity::class.java)
+        val notifyIntent = Intent(this, NoahMainActivity::class.java)
 
         notifyIntent.putExtra("title", title)
         notifyIntent.putExtra("message", info)

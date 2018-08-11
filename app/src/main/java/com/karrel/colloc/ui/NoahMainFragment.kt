@@ -15,11 +15,11 @@ import com.karrel.colloc.ui.model.MainItem
 import com.karrel.colloc.ui.widget.CollocMainListAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment() {
+class NoahMainFragment : Fragment() {
 
     companion object {
-        fun newInstance(): MainFragment {
-            return MainFragment()
+        fun newInstance(): NoahMainFragment {
+            return NoahMainFragment()
         }
     }
 

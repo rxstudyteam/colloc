@@ -17,7 +17,7 @@ public class ConvertTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
-        appContext.startActivity(new Intent(appContext, MainActivity.class));
+        appContext.startActivity(new Intent(appContext, NoahMainActivity.class));
 
         assertEquals(appContext.getPackageName(), "com.karrel.colloc");
     }
