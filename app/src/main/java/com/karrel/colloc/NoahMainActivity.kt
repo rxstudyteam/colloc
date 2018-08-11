@@ -15,7 +15,7 @@ class NoahMainActivity : BaseActivity() {
 
     override val requestPermissionList: List<String> = listOf("android.permission.ACCESS_FINE_LOCATION")
 
-    override val layoutResID: Int = R.layout.activity_main
+    override val layoutResID: Int = R.layout.activity_main_noah
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

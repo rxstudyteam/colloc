@@ -13,7 +13,7 @@ import com.karrel.colloc.model.airdata.ExtraInformation
 import com.karrel.colloc.model.airdata.HourlyForecast
 import com.karrel.colloc.ui.model.MainItem
 import com.karrel.colloc.ui.widget.CollocMainListAdapter
-import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_main_noah.*
 
 class NoahMainFragment : Fragment() {
 
@@ -26,7 +26,7 @@ class NoahMainFragment : Fragment() {
     private val collocMainListAdapter: CollocMainListAdapter by lazy { CollocMainListAdapter(context) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_main_noah, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
