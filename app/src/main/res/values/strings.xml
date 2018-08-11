@@ -11,4 +11,6 @@
     <string name="interval_text">시간별 예보(좋음, 보통, 나쁨, 매우나쁨)</string>
     <string name="daily_title_text">일별 예보(좋음, 보통, 나쁨, 매우나쁨)</string>
     <string name="detail_title">세부사항</string>
+    <string name="drawer_open">Open</string>0
+    <string name="drawer_close">Close</string>
 </resources>

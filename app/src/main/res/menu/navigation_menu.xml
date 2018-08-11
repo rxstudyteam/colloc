@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/sendYourFriend"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="사랑하는 사람에게 알려주기"
+        />
+
+    <item
+        android:id="@+id/usageOfWHO"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="세계보건기구(WHO) 기준 사용"
+        />
+
+    <item
+        android:id="@+id/miseEightMode"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="미세미세 8단계 모드"
+        />
+
+    <item
+        android:id="@+id/sendAdmin"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="불편/개선 사항 보내기"
+        />
+
+    <item
+        android:id="@+id/infoMise"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="미세먼지 정보"
+        />
+
+    <item
+        android:id="@+id/forecastImage"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="예보 이미지"
+        />
+
+    <item
+        android:id="@+id/MiseAlarm"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="미세먼지 알람/경보"
+        />
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@mipmap/ic_launcher_round"
+        android:title="설정 (위치 삭제, 위젯)"
+        />
+
+</menu>

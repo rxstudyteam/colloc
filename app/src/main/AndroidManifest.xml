@@ -17,18 +17,19 @@
         android:theme="@style/AppTheme.Notitle"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".test.ImageWrapperTestActivity" />
+        <service android:name=".firebase.CollocFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".mainpage.MainPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
-        <activity android:name=".test.ImageWrapperTestActivity">
-        </activity>
-        <service
-            android:name=".firebase.CollocFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </service>
 
@@ -44,6 +45,8 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        </activity>
+        <activity android:name=".alarm.AlarmSettingActivity"></activity>
     </application>
 
 </manifest>
