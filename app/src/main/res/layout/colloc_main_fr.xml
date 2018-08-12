@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CollocMainFr">
 
     <data>
 
@@ -19,167 +20,394 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".MainActivity">
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
 
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/menu"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:scaleType="center"
-                android:src="#5f00"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/location"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:scaleType="center"
-                android:src="#5f00"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/location_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:scaleType="center"
-                android:src="#5f00"
-                android:textSize="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/menu"
-                tools:text="현재 위치\n(마포구 서교동)" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:scaleType="center"
-                android:src="#5f00"
-                android:textSize="17dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/location_text"
-                tools:text="2018-07-25 10:10 PM" />
-
-
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/state_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:scaleType="center"
-                android:src="#5f00"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/time"
-                tools:layout_height="100dp"
-                tools:layout_width="100dp" />
-
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/state_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:scaleType="center"
-                android:textSize="32dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/state_icon"
-                tools:text="보통" />
-
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/state_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:scaleType="center"
-                android:textSize="22dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/state_text"
-                tools:text="그냥 무난한 날이에요~" />
-
-            <View
-                android:id="@+id/indecater"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_marginTop="@dimen/margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/state_desc"
-                tools:background="#5f00"
-                tools:text="그냥 무난한 날이에요~" />
-
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/appCompatTextView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:gravity="bottom"
-                android:minHeight="50dp"
-                android:paddingRight="@dimen/margin"
-                android:text="화면공유"
-                android:textSize="@dimen/h4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/indecater"
-                tools:background="#5f00" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:gravity="bottom|right"
-                android:minHeight="50dp"
-                android:paddingLeft="@dimen/margin"
-                android:text="예보보기"
-                android:textSize="@dimen/h4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/indecater"
-                tools:background="#50f0" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/appCompatTextView3"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/space"
-                android:text="지금"
-                android:textSize="@dimen/h6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
-                tools:background="#500f" />
+                android:background="#00f"
+                tools:background="#999">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/space"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3"
-                tools:listitem="@layout/colloc_main_fr_nowstate_item" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/menu"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="center"
+                    android:src="#5f00"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        </android.support.constraint.ConstraintLayout>
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/location"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="center"
+                    android:src="#5f00"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/location_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:src="#5f00"
+                    android:textSize="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/menu"
+                    tools:text="현재 위치" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/location_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:src="#5f00"
+                    android:textSize="17dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/location_label"
+                    tools:text="(마포구 서교동)" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:src="#5f00"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/location_text"
+                    tools:text="2018-07-25 10:10 PM" />
+
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/state_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="24dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/emoticon_eight_level_big_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/time" />
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/state_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:textSize="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/state_icon"
+                    tools:text="보통" />
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/state_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:scaleType="center"
+                    android:textSize="22dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/state_text"
+                    tools:text="그냥 무난한 날이에요~" />
+
+                <View
+                    android:id="@+id/indecater"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="@dimen/margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/state_desc"
+                    tools:background="#5f00"
+                    tools:text="그냥 무난한 날이에요~" />
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:gravity="bottom"
+                    android:minHeight="50dp"
+                    android:paddingRight="@dimen/margin"
+                    android:text="화면공유"
+                    android:textSize="@dimen/h4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/indecater"
+                    tools:background="#5f00" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:gravity="bottom|right"
+                    android:minHeight="50dp"
+                    android:paddingLeft="@dimen/margin"
+                    android:text="예보보기"
+                    android:textSize="@dimen/h4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/indecater"
+                    tools:background="#50f0" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#2000"
+                    android:paddingLeft="@dimen/space"
+                    android:text="지금"
+                    android:textSize="@dimen/h6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/space"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3"
+                    tools:listitem="@layout/colloc_main_fr_nowstate_item" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/advertising1_lable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="#2000"
+                    android:paddingLeft="@dimen/space"
+                    android:text="광고(미세먼지 예보는 광고 밑으로 스크롤하기)"
+                    android:textSize="@dimen/h6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/list" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/advertising1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/advertising"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/advertising1_lable" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/time_histroy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="#2000"
+                    android:paddingLeft="@dimen/space"
+                    android:text="시간별 예보(좋음,보통,나쁨,매우나쁨)"
+                    android:textSize="@dimen/h6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/advertising1" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/time_histroy_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/space"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/time_histroy"
+                    tools:listitem="@layout/colloc_main_fr_time_histroy_item" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/day_histroy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="#2000"
+                    android:paddingLeft="@dimen/space"
+                    android:text="일별 예보(좋음,보통,나쁨,매우나쁨)"
+                    android:textSize="@dimen/h6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/time_histroy_list" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/day_histroy_list"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/day_histroy"
+                    tools:itemCount="15"
+                    tools:listitem="@layout/colloc_main_fr_day_histroy_item" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/detail_lable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="#2000"
+                    android:paddingLeft="@dimen/space"
+                    android:text="세부사항"
+                    android:textSize="@dimen/h6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/day_histroy_list" />
+
+                <GridLayout
+                    android:id="@+id/detail_layer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_lable">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="업데이트 시간:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/updated_time"
+                        tools:text="2018-08-01 05:50" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="PM10 측정소 이름:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/pm10_name"
+                        tools:text="신촌로" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="PM2.5 측정소 이름:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/pm25_name"
+                        tools:text="신촌로" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="NO2 측정소 이름:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/no2"
+                        tools:text="신촌로" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="O3 측정소 이름:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/o3"
+                        tools:text="신촌로" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="CO 측정소 이름:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/co"
+                        tools:text="신촌로" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="SO2 측정소 이름:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/sO2"
+                        tools:text="신촌로" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="pm10 측정소 분류:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/pm10"
+                        tools:text="신촌로" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="pm2.5 측정소 분류:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/pm25"
+                        tools:text="신촌로" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="통합지수 값:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tqs_value"
+                        tools:text="50 unit(최근24시간 평균)" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_gravity="right"
+                        android:paddingRight="5dp"
+                        android:text="통합지수 상태:" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tqs"
+                        tools:text="좋음(최근24시간 평균)" />
+                </GridLayout>
+
+                <TextView
+                    android:id="@+id/memo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="@dimen/h6"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_layer"
+                    tools:text="콜록은 사용자분과 가장 가까이 위치한, 정상 작동 중인\n측정소의 실시간 정보를 보여드립니다.\n\n본 자료는 한국환공공단과 블라블라블라 쇽쇽쇽 슥슥 샥샥" />
+
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
 </layout>
