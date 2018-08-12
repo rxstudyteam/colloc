@@ -7,6 +7,18 @@ import com.karrel.colloc.model.airdata.AirData
 class CollocMainViewModel : ViewModel() {
     private var mAirData: MutableLiveData<AirData>? = null
 
+    fun getAirData(location: String): MutableLiveData<AirData> {
+        if (mAirData == null) {
+            mAirData = MutableLiveData()
+        }
+
+        var dat = getMsrstnAcctoRltmMesureDnsty(location)
+        mAirData!!.value = dat
+
+        return mAirData as MutableLiveData<AirData>
+    }
+
+
     fun getAirData(long: Double, lan: Double): MutableLiveData<AirData> {
         if (mAirData == null) {
             mAirData = MutableLiveData()
@@ -23,10 +35,10 @@ class CollocMainViewModel : ViewModel() {
 //        TODO("getNearbyMsrstnList airdata via tm location")
 //        var dat = getNearbyMsrstnList(pair.first, pair.second)
 
-        TODO("WBS84 to 주소")
+//        TODO("WBS84 to 주소")
         var address_depth2 = wgs2address(long, lan)
 
-        TODO("getMsrstnAcctoRltmMesureDnsty airdata via tm location")
+        //      TODO("getMsrstnAcctoRltmMesureDnsty airdata via tm location")
         var dat = getMsrstnAcctoRltmMesureDnsty(address_depth2)
         airData.value = dat
 //        airData.postValue(dat)
