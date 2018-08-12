@@ -8,7 +8,7 @@ import com.karrel.colloc.ui.model.MainItem
 import kotlinx.android.synthetic.main.part_total.view.*
 
 
-class TotalPartView: BasePartView<OverallValue>{
+class TotalPartView : BasePartView<OverallValue> {
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -16,24 +16,23 @@ class TotalPartView: BasePartView<OverallValue>{
 
     override fun layoutRes(): Int = R.layout.part_total
 
-    private var overallData: MainItem.headItem? = null
+    private var overallData: OverallValue? = null
         set(value) {
             field = value
             updateView()
         }
 
     override fun onChanged(t: OverallValue?) {
-        overallData = t?.let {
-            MainItem.headItem(it.locationName, it.updateTime, it.status, it.description)
-        }
+
+        overallData = t
     }
 
-    fun updateView(){
+    fun updateView() {
         overallData?.let {
-            curLocationMini?.text = it.location
-            time?.text = it.time
-            titleStatus?.text = it.airState.toString()
-            status?.text = it.airDescription
+            curLocationMini?.text = it.locationName
+            time?.text = it.updateTime
+            titleStatus?.text = it.status
+            status?.text = it.description
 
         }
     }

@@ -16,7 +16,7 @@ class CurrentPartView(context: Context?, viewModel: MainViewmodel, disposable: F
     override fun layoutRes(): Int = R.layout.part_current
 
 
-    private lateinit var adapter: CurrentAdapter
+    private lateinit var adapter: KarelCurrentAdapter
 
     init {
         setupRecyclerView()
@@ -25,20 +25,20 @@ class CurrentPartView(context: Context?, viewModel: MainViewmodel, disposable: F
     override fun setupObservableEvents() {
         disposable += viewModel.output.currentDataObservable().subscribe {
             adapter.initItem()
-            adapter.addItem(CurrentAdapter.CurrentItem("미세먼지", R.drawable.smile, "좋음", "16ppm"))
-            adapter.addItem(CurrentAdapter.CurrentItem("초미세먼지", R.drawable.smile, "좋음", "12ppm"))
-            adapter.addItem(CurrentAdapter.CurrentItem("이산화질소", R.drawable.smile, "좋음", "15ppm"))
-            adapter.addItem(CurrentAdapter.CurrentItem("오존", R.drawable.smile, "좋음", "2ppm"))
-            adapter.addItem(CurrentAdapter.CurrentItem("일산화탄소", R.drawable.smile, "좋음", "1356ppm"))
-            adapter.addItem(CurrentAdapter.CurrentItem("홍홍홍홍", R.drawable.smile, "좋음", "32ppm"))
-            adapter.addItem(CurrentAdapter.CurrentItem("으헹헹헹", R.drawable.smile, "좋음", "22ppm"))
+            adapter.addItem(KarelCurrentAdapter.CurrentItem("미세먼지", R.drawable.smile, "좋음", "16ppm"))
+            adapter.addItem(KarelCurrentAdapter.CurrentItem("초미세먼지", R.drawable.smile, "좋음", "12ppm"))
+            adapter.addItem(KarelCurrentAdapter.CurrentItem("이산화질소", R.drawable.smile, "좋음", "15ppm"))
+            adapter.addItem(KarelCurrentAdapter.CurrentItem("오존", R.drawable.smile, "좋음", "2ppm"))
+            adapter.addItem(KarelCurrentAdapter.CurrentItem("일산화탄소", R.drawable.smile, "좋음", "1356ppm"))
+            adapter.addItem(KarelCurrentAdapter.CurrentItem("홍홍홍홍", R.drawable.smile, "좋음", "32ppm"))
+            adapter.addItem(KarelCurrentAdapter.CurrentItem("으헹헹헹", R.drawable.smile, "좋음", "22ppm"))
         }
     }
 
 
     private fun setupRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        adapter = CurrentAdapter()
+        adapter = KarelCurrentAdapter()
         recyclerView.adapter = adapter
     }
 

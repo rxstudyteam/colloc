@@ -26,6 +26,11 @@
                 android:id="@+id/totalPartView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <com.karrel.colloc.ui.main.part.CurrentPartView
+                android:id="@+id/currentPartView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
 

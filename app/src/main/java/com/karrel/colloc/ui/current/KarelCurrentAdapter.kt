@@ -8,7 +8,7 @@ import com.karrel.colloc.R
 import kotlinx.android.synthetic.main.item_current.view.*
 import java.util.ArrayList
 
-class CurrentAdapter : RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder>() {
+class KarelCurrentAdapter : RecyclerView.Adapter<KarelCurrentAdapter.CurrentViewHolder>() {
 
     private val itemList: ArrayList<CurrentItem> = ArrayList()
 

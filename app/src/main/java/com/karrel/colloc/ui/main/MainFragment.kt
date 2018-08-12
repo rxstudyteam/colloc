@@ -77,6 +77,7 @@ class MainFragment : Fragment() {
             Log.d(TAG, "getAirData observe $airData") })
 
         viewModel.getOverallValue().observe(this, totalPartView)
+        viewModel.getCurrentValue().observe(this, currentPartView)
     }
 
     override fun onResume() {
