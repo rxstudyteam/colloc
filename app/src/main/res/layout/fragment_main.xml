@@ -7,7 +7,7 @@
     tools:background="@color/bg_nice"
     tools:context=".ui.main.KarrelMainFragment">
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,9 +19,16 @@
             android:id="@+id/partGroupForm"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            >
+
+            <com.karrel.colloc.ui.main.part.TotalPartView
+                android:id="@+id/totalPartView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
 
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.constraint.ConstraintLayout>

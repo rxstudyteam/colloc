@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.karrel.colloc.R
 import com.karrel.colloc.extensions.FragmentDisposable
+import com.karrel.colloc.model.airdata.AirData
+import com.karrel.colloc.model.airdata.OverallValue
 import com.karrel.colloc.ui.advertising.AdvertisingPartView
 import com.karrel.colloc.ui.bottom_advertising.BottomAdvertisingPartView
 import com.karrel.colloc.ui.current.CurrentPartView
@@ -18,6 +20,7 @@ import com.karrel.colloc.ui.daily.DailyPartView
 import com.karrel.colloc.ui.detail.DetailPartView
 import com.karrel.colloc.ui.interval.IntervalPartView
 import com.karrel.colloc.ui.model.AirViewModel
+import com.karrel.colloc.ui.model.MainItem
 import com.karrel.colloc.ui.total.TotalPartView
 import com.karrel.colloc.viewmodel.MainViewmodel
 import com.karrel.colloc.viewmodel.MainViewmodelImpl
@@ -42,6 +45,8 @@ class MainFragment : Fragment() {
                 }
     }
 
+    var airData : AirData? = null
+
     private val viewModel: MainViewmodel = MainViewmodelImpl()
     private var isCurLocation: Boolean = false // 현재위치 플러그
     private var location: String? = null // 위치 정보
@@ -61,15 +66,17 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
-        val viewModel = ViewModelProviders.of(this).get(AirViewModel::class.java)
-        viewModel.getAirData().observe(this, Observer { airData -> Log.d(TAG, "getAirData observe $airData") })
-
-
-        addPartViews()
         setupObservableEvents()
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val viewModel = ViewModelProviders.of(this).get(AirViewModel::class.java)
+        viewModel.getAirData().observe(this, Observer { airData ->
+            this.airData = airData
+            Log.d(TAG, "getAirData observe $airData") })
 
+        viewModel.getOverallValue().observe(this, totalPartView)
     }
 
     override fun onResume() {

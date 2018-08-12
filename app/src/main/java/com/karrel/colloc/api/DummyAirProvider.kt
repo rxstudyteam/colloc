@@ -23,7 +23,7 @@ object DummyAirProvider {
 
     private fun getAirDataObservable(): Observable<AirData> {
 
-        val overallValue = OverallValue("201030123", 2, "2", "11", "location name")
+        val overallValue = OverallValue("2018-07-29 07:15 PM", 2, "2", "11", "location name")
         val currentValueList = listOf<CurrentValue>(CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"), CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"), CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"), CurrentValue("초미세먼지", 2, "나쁨", "27 ㎍/㎥"), CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"), CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"), CurrentValue("미세먼지", 1, "좋음", "17 ㎍/㎥"))
         val hourlValueList = listOf<HourlyForecast>(HourlyForecast("오후10시", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"), HourlyForecast("오후10시", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"), HourlyForecast("오후10시", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"), HourlyForecast("오후10시", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"), HourlyForecast("오후10시", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"))
         val dailyValueList = listOf<DailyForecast>(DailyForecast("월요일 아침", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"), DailyForecast("월요일 아침", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"), DailyForecast("월요일 아침", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"), DailyForecast("월요일 아침", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"), DailyForecast("월요일 아침", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"), DailyForecast("월요일 아침", 2, "좋음", "16 ㎍/㎥", "5 ㎍/㎥"))

@@ -42,7 +42,7 @@ class NoahMainFragment : Fragment() {
         val extraInFormation = ExtraInformation(" 업데이트 시간, PM10 측정소 이름 등", "가평")
 
         val mainItemList = mutableListOf<MainItem>()
-        mainItemList.add(MainItem.headItem("분당구 삼평동", System.currentTimeMillis(), 0, "공기가 탁하네요. 조심하세요~"))
+        mainItemList.add(MainItem.headItem("분당구 삼평동", "2018-07-29 07:15 PM", "맑음", "공기가 탁하네요. 조심하세요~"))
         mainItemList.add(MainItem.currentItem(currentValueList))
         mainItemList.add(MainItem.hourlyItem(hourlValueList))
         mainItemList.add(MainItem.dailyItem(dailyValueList))

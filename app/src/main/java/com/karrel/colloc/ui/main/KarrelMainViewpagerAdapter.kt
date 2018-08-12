@@ -5,20 +5,20 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import java.util.ArrayList
 
-class MainViewpagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
+class KarrelMainViewpagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
 
-    private val itemList: MutableList<String> = mutableListOf()
+    private val itemList: ArrayList<Fragment> = ArrayList()
 
     override fun getItem(position: Int): Fragment {
-        return MainFragment.newInstance(location = itemList[position])
+        return itemList[position]
     }
 
     override fun getCount(): Int {
         return itemList.size
     }
 
-    fun addLocation(location: String) {
-        itemList.add(location)
+    fun addFragment(fragment: Fragment) {
+        itemList.add(fragment)
         notifyDataSetChanged()
     }
 
