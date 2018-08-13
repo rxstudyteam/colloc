@@ -17,27 +17,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Notitle"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".main.CollocMain"
+            android:exported="true"
+            android:label="DC"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- <activity android:name=".MainActivity"> -->
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity android:name=".test.ImageWrapperTestActivity" />
 
-        <service android:name=".firebase.CollocFirebaseMessagingService"></service>
+        <service android:name=".firebase.CollocFirebaseMessagingService" />
 
         <activity android:name=".NoahMainActivity">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".mainpage.MainPageActivity">
-
-        </activity>
+        <activity android:name=".mainpage.MainPageActivity"></activity>
 
         <service
             android:name=".notification.AlarmService"
@@ -52,7 +60,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".alarm.AlarmSettingActivity"></activity>
+        <activity android:name=".alarm.AlarmSettingActivity" />
     </application>
 
 </manifest>

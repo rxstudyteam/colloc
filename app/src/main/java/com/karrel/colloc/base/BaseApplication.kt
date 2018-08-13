@@ -2,11 +2,16 @@ package com.karrel.colloc.base
 
 import android.app.Application
 import android.preference.PreferenceManager
+
 import com.karrel.colloc.notification.NotificationChannelManager
+import com.eastandroid.mlb_base.PP
+
 
 class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        PP.CREATE(applicationContext)
+        android.log.Log.LOG = true
         createChannel()
     }
 
@@ -17,7 +22,6 @@ class BaseApplication : Application() {
         val currentVersionCode = packageManager.getPackageInfo(packageName, 0).versionCode
         if (versionCode < currentVersionCode) {
             NotificationChannelManager.createChannel(applicationContext)
-//            NotificationChannelManager.deleteChannel(applicationContext)
         }
     }
 }

@@ -11,4 +11,10 @@
     <dimen name="total_fragment_height">450dp</dimen>
     <dimen name="advertising_height">305dp</dimen>
     <dimen name="bottom_advertising_height">58dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

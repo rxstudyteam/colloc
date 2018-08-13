@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="margin">16dp</dimen>
+    <dimen name="space">8dp</dimen>
+
+    <dimen name="h1">24sp</dimen>
+    <dimen name="h2">19sp</dimen>
+    <dimen name="h3">17sp</dimen>
+    <dimen name="h4">15sp</dimen>
+    <dimen name="h5">13sp</dimen>
+    <dimen name="h6">11sp</dimen>
+
+</resources>
+
+

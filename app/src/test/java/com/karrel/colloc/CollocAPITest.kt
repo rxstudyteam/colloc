@@ -5,11 +5,9 @@ import io.reactivex.schedulers.Schedulers
 import org.junit.Assert.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.junit.platform.runner.JUnitPlatform
 import org.junit.runner.RunWith
 import java.util.concurrent.TimeUnit
 
-@RunWith(JUnitPlatform::class)
 class CollocAPITest {
 
     @DisplayName("여기에 테스트할 API 명을 적어주세요 ")

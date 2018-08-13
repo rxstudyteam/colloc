@@ -40,7 +40,6 @@ class PermissionRequest(context: Context, permissions: List<String>) : Observer 
 
     override fun update(observer: Observable, data: Any?) {
         @Suppress("UNCHECKED_CAST")
-
         val deniedPermissions = data as List<String>
         android.util.Log.e("PERMISSION", "승인상태1:$deniedPermissions")
 
@@ -49,7 +48,7 @@ class PermissionRequest(context: Context, permissions: List<String>) : Observer 
         else
             onDenied?.invoke(this, deniedPermissions)
 
-        PermissionObserver.instance.deleteObserver(this)
+        PermissionObserver.deleteObserver(this)
     }
 
 
@@ -65,7 +64,7 @@ class PermissionRequest(context: Context, permissions: List<String>) : Observer 
         if (deniedPermissions.size <= 0)
             onGranted()
 
-        PermissionObserver.instance.addObserver(this)
+        PermissionObserver.addObserver(this)
         val intent = Intent(mContext, PermissionChecker::class.java)
         intent.putExtra(PermissionChecker.EXTRA.PERMISSIONS, ArrayList<String>(requestPermissions))
         intent.putExtra(PermissionChecker.EXTRA.REQUEST_MESSAGE, mRequestMessage)

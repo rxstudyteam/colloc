@@ -130,7 +130,7 @@ object Log {
 
     class 에러아님_Exception : Throwable()
 
-    fun p(priority: Int, vararg args: Any): Int {
+    fun p(priority: Int, vararg args: Any?): Int {
         if (!LOG)
             return -1
 
@@ -445,7 +445,7 @@ object Log {
         return if (!LOG) -1 else p(android.util.Log.ASSERT, *args)
     }
 
-    fun e(vararg args: Any): Int {
+    fun e(vararg args: Any?): Int {
         return if (!LOG) -1 else p(android.util.Log.ERROR, *args)
     }
 
@@ -567,12 +567,8 @@ object Log {
     ////////////////////////////////////////////////////////////////////////////
     //_DUMP
     ////////////////////////////////////////////////////////////////////////////
-    fun _MESSAGE(vararg args: Any): String {
-        return _INTERNAL_MESSAGE(args)
-    }
-
-    private fun _INTERNAL_MESSAGE(args: Array<out Any>): String {
-        if (args == null)
+    fun _MESSAGE(vararg args: Any?): String {
+        if (args.isEmpty())
             return "null[]"
 
         val sb = StringBuilder()
@@ -830,37 +826,25 @@ object Log {
 
     private fun _DUMP_array(o: Any?): String {
 
-        //@formatter:off
-		if (o == null)
-return "null"
+        if (o == null)
+            return "null"
 
-if (!o.javaClass.isArray())
-return ""
+        if (!o.javaClass.isArray())
+            return ""
 
-val elemElemClass = o.javaClass.getComponentType()
-return if (elemElemClass.isPrimitive()) {
-            if (Boolean::class.javaPrimitiveType == elemElemClass)
-                Arrays.toString(o as BooleanArray?)
-            else if (Char::class.javaPrimitiveType == elemElemClass)
-                Arrays.toString(o as CharArray?)
-            else if (Double::class.javaPrimitiveType == elemElemClass)
-                Arrays.toString(o as DoubleArray?)
-            else if (Float::class.javaPrimitiveType == elemElemClass)
-                Arrays.toString(o as FloatArray?)
-            else if (Int::class.javaPrimitiveType == elemElemClass)
-                Arrays.toString(o as IntArray?)
-            else if (Long::class.javaPrimitiveType == elemElemClass)
-                Arrays.toString(o as LongArray?)
-            else if (Short::class.javaPrimitiveType == elemElemClass)
-                Arrays.toString(o as ShortArray?)
-            else if (Byte::class.javaPrimitiveType == elemElemClass)
-                _DUMP(o as ByteArray?)
-            else
-                throw AssertionError()
+        val elemElemClass = o.javaClass.getComponentType()
+        return if (elemElemClass.isPrimitive()) {
+            if (Boolean::class.javaPrimitiveType == elemElemClass) Arrays.toString(o as BooleanArray?)
+            else if (Char::class.javaPrimitiveType == elemElemClass) Arrays.toString(o as CharArray?)
+            else if (Double::class.javaPrimitiveType == elemElemClass) Arrays.toString(o as DoubleArray?)
+            else if (Float::class.javaPrimitiveType == elemElemClass) Arrays.toString(o as FloatArray?)
+            else if (Int::class.javaPrimitiveType == elemElemClass) Arrays.toString(o as IntArray?)
+            else if (Long::class.javaPrimitiveType == elemElemClass) Arrays.toString(o as LongArray?)
+            else if (Short::class.javaPrimitiveType == elemElemClass) Arrays.toString(o as ShortArray?)
+            else if (Byte::class.javaPrimitiveType == elemElemClass) _DUMP(o as ByteArray?)
+            else throw AssertionError()
         } else
-            Arrays.toString(o as Array<Any>?)
- //@formatter:on
-
+            Arrays.toString(o as Array<*>)
     }
 
     private fun _DUMP(cls: Class<*>?): String {
@@ -1155,13 +1139,13 @@ sb.append(Arrays.toString(value as Array<Any>?))
     }
 
     @JvmStatic
-    fun tic(args: Array<String>) {
+    fun tic(vararg args: Any) {
         if (!LOG)
             return
         val seed = Exception().stackTrace[2].fileName
         val e = System.currentTimeMillis()
         val s = SEED_S[seed] ?: 0L
-        e(String.format(Locale.getDefault(), "%15d%15d%15d", s, e, e - s), _INTERNAL_MESSAGE(args))
+        e(String.format(Locale.getDefault(), "%15d%15d%15d", s, e, e - s), _MESSAGE(*args))
         SEED_S[seed] = e
     }
 
@@ -1178,7 +1162,7 @@ sb.append(Arrays.toString(value as Array<Any>?))
             return
         val e = System.currentTimeMillis()
         val s = SEED_S[seed] ?: 0L
-        e(String.format(Locale.getDefault(), "%15d%15d%15d", s, e, e - s), seed, _INTERNAL_MESSAGE(args))
+        e(String.format(Locale.getDefault(), "%15d%15d%15d", s, e, e - s), seed, _MESSAGE(*args))
         SEED_S[seed] = e
     }
 

@@ -1,0 +1,8 @@
+측정소 정보
+https://dustfeel.com/station
+
+측정소별 도로명주소
+https://www.airkorea.or.kr/stationInfo?action=station&districtnum=02&stationCode=111261&numValue=&loading=yes&leftShow=realTime&areaImg=04&itemCode=&loading=yes&leftShow=realTime
+
+좌표계변환
+https://developers.kakao.com/docs/restapi/local#%EC%A2%8C%ED%91%9C%EA%B3%84-%EB%B3%80%ED%99%98

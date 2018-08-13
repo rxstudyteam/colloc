@@ -74,12 +74,16 @@
         <item name="android:textColor">@color/text_color_1_alpha</item>
     </style>
 
-    <style name="text.size1.alpha" parent="text.size1"/>
+    <style name="text.size1.alpha" parent="text.size1" />
 
     <style name="AlarmSettingSwitch" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">#00CE86</item>
         <item name="colorSwitchThumbNormal">#f1f1f1</item>
         <item name="android:colorForeground">#42221f1f</item>
     </style>
+
+    <style name="AppTheme.Notitle.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.Notitle.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

@@ -6,24 +6,28 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'com.google.gms.google-services'
+
 
 
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.karrel.colloc"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -45,9 +49,12 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:support-media-compat:27.1.1'
     implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+
     implementation 'com.github.ronaldsmartin:Material-ViewPagerIndicator:1.0.4'
+
 
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
@@ -78,8 +85,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation project(':lib_permission')
+    implementation project(':mib_base')
 
     implementation 'com.android.support:recyclerview-v7:27.1.1'
 
 
 }
+
+apply plugin: 'com.google.gms.google-services'
