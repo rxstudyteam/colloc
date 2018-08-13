@@ -32,12 +32,18 @@ class CurrentAdapter : RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder>() 
     }
 
 
-    class CurrentViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    class CurrentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val type = itemView.type
+        val emoticon = itemView.emoticon
+        val status = itemView.status
+        val data = itemView.data
+
+
         fun setData(item: CurrentValue) {
-            itemView.type.text = item.title
-//            itemView.emoticon.setImageResource(item)
-            itemView.status.text = item.status
-            itemView.data.text = item.value
+            type.text = item.title
+//            emoticon.setImageResource(item)
+            status.text = item.status
+            data.text = item.value
         }
     }
 

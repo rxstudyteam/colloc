@@ -36,6 +36,10 @@ class AirViewModel : ViewModel() {
         return currentValueList
     }
 
+    fun getHourlyValue(): LiveData<List<HourlyForecast>>{
+        return hourlyForecast
+    }
+
     fun getDailyValue(): LiveData<List<DailyForecast>>{
         return dailyForecast
     }
@@ -47,6 +51,7 @@ class AirViewModel : ViewModel() {
                     overallData.value = it.overallValue
                     currentValueList.value = it.currentValues
                     dailyForecast.value = it.dailyForecasts
+                    hourlyForecast.value = it.hourlyForecasts
                 },
                 onError = {})
 

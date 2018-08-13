@@ -8,7 +8,7 @@ import com.karrel.colloc.R
 import kotlinx.android.synthetic.main.item_interval.view.*
 import java.util.ArrayList
 
-class IntervalAdapter : RecyclerView.Adapter<IntervalAdapter.CurrentViewHolder>() {
+class KarrelIntervalAdapter : RecyclerView.Adapter<KarrelIntervalAdapter.CurrentViewHolder>() {
 
     private val itemList: ArrayList<IntervalItem> = ArrayList()
 

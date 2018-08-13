@@ -32,6 +32,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <com.karrel.colloc.ui.main.part.IntervalPartView
+                android:id="@+id/hourlyPartView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
             <com.karrel.colloc.ui.main.part.DailyPartView
                 android:id="@+id/dailyPartView"
                 android:layout_width="match_parent"

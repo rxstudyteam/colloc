@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.part_interval.view.*
 class IntervalPartView(context: Context?, viewModel: MainViewmodel, disposable: FragmentDisposable) : PartView(context, viewModel, disposable) {
 
     override fun layoutRes(): Int = R.layout.part_interval
-    private lateinit var adapter: IntervalAdapter
+    private lateinit var adapter: KarrelIntervalAdapter
 
 
     init {
@@ -29,19 +29,19 @@ class IntervalPartView(context: Context?, viewModel: MainViewmodel, disposable: 
 
     private fun setupTestIntervalData() {
         adapter.initItem()
-        adapter.addItem(IntervalAdapter.IntervalItem("오후 8시", R.drawable.smile, "좋음"))
-        adapter.addItem(IntervalAdapter.IntervalItem("오후 9시", R.drawable.smile, "좋음"))
-        adapter.addItem(IntervalAdapter.IntervalItem("오후 10시", R.drawable.smile, "좋음"))
-        adapter.addItem(IntervalAdapter.IntervalItem("오후 11시", R.drawable.smile, "좋음"))
-        adapter.addItem(IntervalAdapter.IntervalItem("오후 12시", R.drawable.smile, "좋음"))
-        adapter.addItem(IntervalAdapter.IntervalItem("오전 1시", R.drawable.smile, "좋음"))
-        adapter.addItem(IntervalAdapter.IntervalItem("오전 2시", R.drawable.smile, "좋음"))
-        adapter.addItem(IntervalAdapter.IntervalItem("오전 3시", R.drawable.smile, "좋음"))
+        adapter.addItem(KarrelIntervalAdapter.IntervalItem("오후 8시", R.drawable.smile, "좋음"))
+        adapter.addItem(KarrelIntervalAdapter.IntervalItem("오후 9시", R.drawable.smile, "좋음"))
+        adapter.addItem(KarrelIntervalAdapter.IntervalItem("오후 10시", R.drawable.smile, "좋음"))
+        adapter.addItem(KarrelIntervalAdapter.IntervalItem("오후 11시", R.drawable.smile, "좋음"))
+        adapter.addItem(KarrelIntervalAdapter.IntervalItem("오후 12시", R.drawable.smile, "좋음"))
+        adapter.addItem(KarrelIntervalAdapter.IntervalItem("오전 1시", R.drawable.smile, "좋음"))
+        adapter.addItem(KarrelIntervalAdapter.IntervalItem("오전 2시", R.drawable.smile, "좋음"))
+        adapter.addItem(KarrelIntervalAdapter.IntervalItem("오전 3시", R.drawable.smile, "좋음"))
     }
 
     private fun setupRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        adapter = IntervalAdapter()
+        adapter = KarrelIntervalAdapter()
         recyclerView.adapter = adapter
     }
 }
