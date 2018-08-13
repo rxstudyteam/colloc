@@ -17,7 +17,7 @@ class AirViewModel : ViewModel() {
     private var currentValueList: MutableLiveData<List<CurrentValue>> = MutableLiveData()
     private var dailyForecast: MutableLiveData<List<DailyForecast>> = MutableLiveData()
     private var hourlyForecast: MutableLiveData<List<HourlyForecast>> = MutableLiveData()
-    private var extraInformation: MutableLiveData<ExtraInformation> = MutableLiveData()
+    private var extraInformation: MutableLiveData<List<ExtraInformation>> = MutableLiveData()
 
     init {
         loadAirData()
@@ -44,6 +44,10 @@ class AirViewModel : ViewModel() {
         return dailyForecast
     }
 
+    fun getDetailValue(): LiveData<List<ExtraInformation>>{
+        return extraInformation
+    }
+
     private fun loadAirData() {
         disposables += DummyAirProvider.getAirData(
                 onLoaded = {
@@ -52,6 +56,7 @@ class AirViewModel : ViewModel() {
                     currentValueList.value = it.currentValues
                     dailyForecast.value = it.dailyForecasts
                     hourlyForecast.value = it.hourlyForecasts
+                    extraInformation.value = it.extraInformation
                 },
                 onError = {})
 

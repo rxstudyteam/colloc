@@ -1,16 +1,17 @@
-package com.karrel.colloc.ui.detail
+package com.karrel.colloc.ui.main.part
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.karrel.colloc.R
+import com.karrel.colloc.model.airdata.ExtraInformation
 import kotlinx.android.synthetic.main.item_detail.view.*
 import java.util.*
 
 class DetailAdapter : RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
 
-    private val itemList: ArrayList<DetailItem> = ArrayList()
+    private val itemList: ArrayList<ExtraInformation> = ArrayList()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailViewHolder {
@@ -25,23 +26,19 @@ class DetailAdapter : RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
         holder.setData(itemList[position])
     }
 
-    fun addItem(dailyItem: DetailItem) {
-        itemList.add(dailyItem)
+    fun setItems(extraInformation: List<ExtraInformation>) {
+        itemList.clear()
+        itemList.addAll(extraInformation)
         notifyDataSetChanged()
     }
 
-    fun initItem() {
-        itemList.clear()
-    }
 
 
     class DetailViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        fun setData(item: DetailItem) {
+        fun setData(item: ExtraInformation) {
             itemView.title.text = item.title
-            itemView.data.text = item.data
+            itemView.data.text = item.value
         }
     }
 
-
-    class DetailItem(val title: String, val data: String)
 }

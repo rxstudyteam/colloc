@@ -80,6 +80,7 @@ class MainFragment : Fragment() {
         viewModel.getCurrentValue().observe(this, currentPartView)
         viewModel.getHourlyValue().observe(this, hourlyPartView)
         viewModel.getDailyValue().observe(this, dailyPartView)
+        viewModel.getDetailValue().observe(this, detailPartView)
     }
 
     override fun onResume() {

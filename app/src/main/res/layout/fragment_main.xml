@@ -37,10 +37,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-
-
             <com.karrel.colloc.ui.main.part.DailyPartView
                 android:id="@+id/dailyPartView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.karrel.colloc.ui.main.part.DetailPartView
+                android:id="@+id/detailPartView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
