@@ -78,6 +78,7 @@ class MainFragment : Fragment() {
 
         viewModel.getOverallValue().observe(this, totalPartView)
         viewModel.getCurrentValue().observe(this, currentPartView)
+        viewModel.getDailyValue().observe(this, dailyPartView)
     }
 
     override fun onResume() {

@@ -36,12 +36,17 @@ class AirViewModel : ViewModel() {
         return currentValueList
     }
 
+    fun getDailyValue(): LiveData<List<DailyForecast>>{
+        return dailyForecast
+    }
+
     private fun loadAirData() {
         disposables += DummyAirProvider.getAirData(
                 onLoaded = {
                     airData.value = it
                     overallData.value = it.overallValue
                     currentValueList.value = it.currentValues
+                    dailyForecast.value = it.dailyForecasts
                 },
                 onError = {})
 

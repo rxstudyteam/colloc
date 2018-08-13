@@ -8,7 +8,7 @@ import com.karrel.colloc.R
 import kotlinx.android.synthetic.main.item_daily.view.*
 import java.util.ArrayList
 
-class DailyAdapter : RecyclerView.Adapter<DailyAdapter.ViewHolder>() {
+class KarrelDailyAdapter : RecyclerView.Adapter<KarrelDailyAdapter.ViewHolder>() {
 
     private val itemList: ArrayList<Item> = ArrayList()
 
