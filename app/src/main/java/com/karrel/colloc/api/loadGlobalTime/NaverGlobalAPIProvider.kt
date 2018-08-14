@@ -14,7 +14,7 @@ import retrofit2.HttpException
 
 object NaverGlobalAPIProvider {
 
-    private const val BASE_URL = "https://global.apis.naver.com/";
+    private const val BASE_URL = "https://global.apis.naver.com/"
 
     private val apis: NaverGlobalAPIService
 
@@ -25,7 +25,6 @@ object NaverGlobalAPIProvider {
     //NOTE sort 는 쿼리 테스트를 위하여 추가 한 것이라 리스폰스에 영항이 없음.
     //NOTE param 에 currentTime 이외의 값이 들어오면 json으로 리스폰스가 들어옵니다.
     fun getCurrentTime(param: String = "currentTime", query: String = "sort", onLoaded: (time: String) -> Unit, onError: (error: ErrorInfo) -> Unit): Disposable {
-        //TODO Disposable 을 어떻게 처리 할 것인가? 고민을 해보아야함.
         return getCurrentTimeObservable(param, query).subscribe({ content -> onLoaded(content) },
                 { t ->
                     if (t is HttpException) {
