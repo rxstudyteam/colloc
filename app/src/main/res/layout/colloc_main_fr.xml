@@ -5,7 +5,6 @@
     tools:context=".main.CollocMain">
 
     <data>
-
         <variable
             name="vm"
             type="com.karrel.colloc.main.CollocMainViewModel" />
@@ -20,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--<ScrollView-->
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,38 +38,18 @@
                     android:alpha=".5"
                     android:scaleType="fitStart"
                     android:src="@drawable/screenshot"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <!--<android.support.v7.widget.AppCompatImageView-->
-                    <!--android:id="@+id/menu"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:scaleType="center"-->
-                    <!--android:src="#5f00"-->
-                    <!--app:layout_constraintStart_toStartOf="parent"-->
-                    <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-                <!--<android.support.v7.widget.AppCompatImageView-->
-                    <!--android:id="@+id/location"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:scaleType="center"-->
-                    <!--android:src="#5f00"-->
-                    <!--app:layout_constraintEnd_toEndOf="parent"-->
-                    <!--app:layout_constraintTop_toTopOf="parent" />-->
-
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/location_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:scaleType="center"
-                    android:src="#5f00"
-                    android:textSize="24dp"
+                    android:layout_marginTop="26dp"
+                    android:textSize="26dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -79,10 +59,7 @@
                     android:id="@+id/location_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:scaleType="center"
-                    android:src="#5f00"
-                    android:textSize="17dp"
+                    android:textSize="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/location_label"
@@ -92,37 +69,31 @@
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:scaleType="center"
-                    android:src="#5f00"
-                    android:textSize="15dp"
+                    android:layout_marginTop="3dp"
+                    android:textSize="19dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/location_text"
                     tools:text="2018-07-25 10:10 PM" />
 
-
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/state_icon"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="24dp"
-                    android:scaleType="fitCenter"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="30dp"
                     android:src="@drawable/emoticon_eight_level_big_1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/time" />
 
-
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/state_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="18dp"
                     android:gravity="center"
                     android:scaleType="center"
-                    android:textSize="32dp"
+                    android:textSize="40dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/state_icon"
@@ -132,9 +103,7 @@
                     android:id="@+id/state_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:scaleType="center"
+                    android:layout_marginTop="4dp"
                     android:textSize="22dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -145,7 +114,7 @@
                     android:id="@+id/indecater"
                     android:layout_width="match_parent"
                     android:layout_height="7dp"
-                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginTop="21dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/state_desc"
@@ -155,12 +124,11 @@
                     android:id="@+id/appCompatTextView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:gravity="bottom"
-                    android:minHeight="50dp"
-                    android:paddingRight="@dimen/margin"
+                    android:layout_marginTop="36dp"
+                    android:gravity="center"
+                    android:padding="8dp"
                     android:text="화면공유"
-                    android:textSize="@dimen/h4"
+                    android:textSize="14dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -170,10 +138,9 @@
                 <android.support.v7.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="36dp"
                     android:gravity="bottom|right"
-                    android:minHeight="50dp"
-                    android:paddingLeft="@dimen/margin"
+                    android:padding="8dp"
                     android:text="예보보기"
                     android:textSize="@dimen/h4"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -184,14 +151,9 @@
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/appCompatTextView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#2000"
-                    android:paddingLeft="@dimen/space"
+                    style="@style/sub"
                     android:text="지금"
-                    android:textSize="@dimen/h6"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
 
@@ -208,12 +170,9 @@
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/advertising1_lable"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:background="#2000"
-                    android:paddingLeft="@dimen/space"
+                    style="@style/sub"
+                    android:layout_marginTop="5dp"
                     android:text="광고(미세먼지 예보는 광고 밑으로 스크롤하기)"
-                    android:textSize="@dimen/h6"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/list" />
@@ -221,10 +180,11 @@
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/advertising1"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="10dp"
                     android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
+                    android:alpha=".7"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/advertising"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -232,13 +192,10 @@
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/time_histroy"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#2000"
-                    android:paddingLeft="@dimen/space"
+                    style="@style/sub"
+                    android:layout_marginTop="10dp"
                     android:text="시간별 예보(좋음,보통,나쁨,매우나쁨)"
-                    android:textSize="@dimen/h6"
+                    android:textSize="13dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/advertising1" />
@@ -256,13 +213,9 @@
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/day_histroy"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#2000"
-                    android:paddingLeft="@dimen/space"
+                    style="@style/sub"
+                    android:layout_marginTop="5dp"
                     android:text="일별 예보(좋음,보통,나쁨,매우나쁨)"
-                    android:textSize="@dimen/h6"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/time_histroy_list" />
@@ -282,13 +235,9 @@
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/detail_lable"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="#2000"
-                    android:paddingLeft="@dimen/space"
+                    style="@style/sub"
                     android:text="세부사항"
-                    android:textSize="@dimen/h6"
+                    android:textSize="13dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/day_histroy_list" />

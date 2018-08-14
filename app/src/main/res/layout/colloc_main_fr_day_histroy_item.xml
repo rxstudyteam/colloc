@@ -4,46 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="1dp">
+    android:layout_marginBottom="1dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    tools:background="#5f00">
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingLeft="@dimen/space"
-        android:textSize="@dimen/h6"
+        android:paddingLeft="16dp"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/state_icon"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="월요일 아침" />
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/state_icon"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:scaleType="center"
+        android:scaleType="centerInside"
+        android:src="@drawable/emoticon_eight_level_small_1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/state_text"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cat"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="#5f00" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/state_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="@dimen/h6"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingRight="16dp"
+        android:textSize="13dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/cat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/state_icon"
-        app:layout_constraintTop_toTopOf="parent"
         tools:text="좋음" />
 
 </android.support.constraint.ConstraintLayout>
