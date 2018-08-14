@@ -1,10 +1,17 @@
 package com.karrel.colloc.main
 
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.content.Context
+import android.log.Log
+import android.widget.Toast
 import com.karrel.colloc.model.airdata.AirData
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
-class CollocMainViewModel : ViewModel() {
+class CollocMainViewModel(application: Application) : AndroidViewModel(application) {
     private var mAirData: MutableLiveData<AirData>? = null
 
     fun getAirData(location: String): MutableLiveData<AirData> {
@@ -22,8 +29,28 @@ class CollocMainViewModel : ViewModel() {
     fun getAirData(long: Double, lan: Double): MutableLiveData<AirData> {
         if (mAirData == null) {
             mAirData = MutableLiveData()
-            loadAirData(mAirData!!, long, lan)
         }
+        var context: Context = (getApplication() as Application).applicationContext
+
+
+//        getLocalService().getTM()
+
+//        var diss = getLocalService()
+//                .getTM(126.57821604896051, 33.45613394001848)
+//                .subscribeOn(Schedulers.io())
+//                .concatMap {  }
+//                .subscribe{ Log.i( it.documents!![0].x , it.documents!![0].y) }
+
+        var dis = getCollocService()
+                .getAirData(1.5, 2.5)
+
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        { mAirData!!.value = it },
+                        { Toast.makeText(context, it.message, Toast.LENGTH_LONG).show() }
+                )
+
         return mAirData as MutableLiveData<AirData>
     }
 
@@ -45,7 +72,7 @@ class CollocMainViewModel : ViewModel() {
     }
 
     //행정구역을이용하는방법-----------------------------------------------------------------------------------------
-    //https://dapi.kakao.com/v2/local/geo/coord2address.json?x=127.029475&y=37.496690&input_coord=WGS84&output_coord=WGS84
+//https://dapi.kakao.com/v2/local/geo/coord2address.json?x=127.029475&y=37.496690&input_coord=WGS84&output_coord=WGS84
     private fun wgs2address(long: Double, lan: Double): String {
         return "강남구"
     }
@@ -59,9 +86,9 @@ class CollocMainViewModel : ViewModel() {
     }
 
     //좌표를이용한방법-----------------------------------------------------------------------------------------
-    //제주도 영주고등학교옆
-    //https://dapi.kakao.com/v2/local/geo/transcoord.json?x=126.57821604896051&y=33.45613394001848&input_coord=WGS84&output_coord=TM
-    fun wgs2tm(long: Double, lan: Double): Pair<Double, Double> {
+//제주도 영주고등학교옆
+// https://dapi.kakao.com/v2/local/geo/transcoord.json?x=126.57821604896051&y=33.45613394001848&input_coord=WGS84&output_coord=TM
+    public fun wgs2tm(long: Double, lan: Double): Pair<Double, Double> {
         return Pair(160710.37832030823, -4388.881011964753)
     }
 
@@ -72,7 +99,4 @@ class CollocMainViewModel : ViewModel() {
         dat.overallValue.locationName = "마포구"
         return dat
     }
-
-
 }
-

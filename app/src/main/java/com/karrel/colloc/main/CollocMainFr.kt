@@ -13,6 +13,9 @@ import android.view.ViewGroup
 import com.karrel.colloc.R
 import com.karrel.colloc.databinding.CollocMainFrBinding
 import com.karrel.colloc.model.airdata.AirData
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.colloc_main_fr.*
 
 class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
@@ -64,6 +67,10 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         bb.indecater.setDrawable(R.drawable.shape_dot_n, R.drawable.shape_dot_c)
         bb.indecater.setCount(mItemCount)
         bb.indecater.setCurrentPosition(mPosition)
+
+
+
+//        bb.vm?.getAirData(mLocation)!!.observe(this, Observer { onUpdateUI(it) })
     }
 
     private fun onLoad() {
@@ -73,7 +80,6 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     //-------------------------------------------------------------------------------------
     override fun onRefresh() {
 //        Handler().postDelayed({ swipe_layer.isRefreshing = false }, 5000)
-        bb.vm?.getAirData(mLocation)!!.observe(this, Observer { onUpdateUI(it) })
 
 //        val long = 127.029475
 //        val lan = 37.496690
