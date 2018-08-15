@@ -46,6 +46,11 @@
                 android:id="@+id/detailPartView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <com.karrel.colloc.ui.main.part.AdvertisingPartView
+                android:id="@+id/advertisingPartView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
 

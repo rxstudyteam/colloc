@@ -2,9 +2,9 @@ package com.karrel.colloc.ui.main.part
 
 import android.content.Context
 import android.util.AttributeSet
+import android.widget.Toast
 import com.karrel.colloc.R
 import com.karrel.colloc.model.airdata.OverallValue
-import com.karrel.colloc.ui.model.MainItem
 import kotlinx.android.synthetic.main.part_total.view.*
 
 
@@ -35,5 +35,11 @@ class TotalPartView : BasePartView<OverallValue> {
             status?.text = it.description
 
         }
+    }
+
+    //TODO overallData 이외에 전체 뷰에서 사용되는 ViewModel의 다른 data를 어떻게 access 할지 고민
+    override fun setupButtonsEvents() {
+        screenShare.setOnClickListener { overallData?.let{ Toast.makeText(context, "ScreenShare", Toast.LENGTH_SHORT).show() } }
+        showForecast.setOnClickListener { overallData?.let{ Toast.makeText(context, "ShowForecast", Toast.LENGTH_SHORT).show() } }
     }
 }

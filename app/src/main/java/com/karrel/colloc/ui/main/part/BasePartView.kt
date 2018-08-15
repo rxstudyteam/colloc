@@ -12,9 +12,11 @@ abstract class BasePartView<T> : ConstraintLayout, Observer<T> {
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     abstract fun layoutRes(): Int
+    protected open fun setupButtonsEvents() {}
 
     init {
         LayoutInflater.from(context).inflate(layoutRes(), this, true)
+        setupButtonsEvents()
     }
 
 }

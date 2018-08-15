@@ -12,7 +12,6 @@ import android.widget.Toast
 import com.karrel.colloc.R
 import com.karrel.colloc.extensions.FragmentDisposable
 import com.karrel.colloc.model.airdata.AirData
-import com.karrel.colloc.model.airdata.OverallValue
 import com.karrel.colloc.ui.advertising.AdvertisingPartView
 import com.karrel.colloc.ui.bottom_advertising.BottomAdvertisingPartView
 import com.karrel.colloc.ui.current.CurrentPartView
@@ -20,7 +19,6 @@ import com.karrel.colloc.ui.daily.DailyPartView
 import com.karrel.colloc.ui.detail.DetailPartView
 import com.karrel.colloc.ui.interval.IntervalPartView
 import com.karrel.colloc.ui.model.AirViewModel
-import com.karrel.colloc.ui.model.MainItem
 import com.karrel.colloc.ui.total.TotalPartView
 import com.karrel.colloc.viewmodel.MainViewmodel
 import com.karrel.colloc.viewmodel.MainViewmodelImpl
@@ -81,6 +79,7 @@ class MainFragment : Fragment() {
         viewModel.getHourlyValue().observe(this, hourlyPartView)
         viewModel.getDailyValue().observe(this, dailyPartView)
         viewModel.getDetailValue().observe(this, detailPartView)
+        viewModel.getAdvertisementValue().observe(this, advertisingPartView)
     }
 
     override fun onResume() {
