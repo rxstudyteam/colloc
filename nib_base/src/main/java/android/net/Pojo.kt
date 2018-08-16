@@ -12,11 +12,8 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStreamWriter
 
-class Pojo(private val name: String, private val json: String) {
+class Pojo(private val json: String, private val name: String = Exception().stackTrace[1].className) {
     private lateinit var pojo: String
-
-    constructor(cls: Class<*>, json: String) : this(cls.simpleName, json) {}
-    constructor(json: String) : this(Exception().stackTrace[1].className, json) {}
 
     init {
         gen()

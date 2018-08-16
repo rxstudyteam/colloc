@@ -81,14 +81,8 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         disposables + Net.create(LocalService::class.java)
                 .getTM(126.57821604896051, 33.45613394001848)
                 .subscribeOn(Schedulers.io())
-                .subscribe(
-                        { Log::i },
-                        { Log::e }
-                )
-
-        disposables + Net.create(CollocService::class.java)
-                .getAirData(244148.546388, 412423.75772)
-                .subscribeOn(Schedulers.io())
+                .filter { it.documents.isNotEmpty() }
+                .flatMap { Net.create(CollocService::class.java).getAirData(it.documents[0].x , it.documents[0].y )}
                 .subscribe(
                         { Log::i },
                         { Log::e }

@@ -167,26 +167,11 @@ object Log {
             }
         }
 
-//        if (MODE == eMODE.ECLIPSE) {
-//            val N = sa.size
-//            if (N <= 0)
-//                return android.util.Log.println(priority, tag, PREFIX + locator)
-//
-//            if (N == 1)
-//                return android.util.Log.println(priority, tag, sa[0] + locator)
-//
-//            var sum = android.util.Log.println(priority, tag, PREFIX_MULTILINE + locator)
-//            for (s in sa)
-//                sum += android.util.Log.println(priority, ":", s)
-//
-//            return sum
-//        } else {
-//        val sb = StringBuilder(".........................................................................................")
-        val sb = StringBuilder(".............................................")
-
+//        val sb = StringBuilder(".............................................")
 //        sb.replace(0, tag.length, tag)
-        sb.replace(sb.length - locator.length, sb.length, locator)
-        val adj_tag = sb.toString()
+//        sb.replace(sb.length - locator.length, sb.length, locator)
+//        val adj_tag = sb.toString()
+        val adj_tag = locator
 
         val N = sa.size
         if (N <= 0)
