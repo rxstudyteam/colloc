@@ -3,11 +3,13 @@ package com.karrel.colloc
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.karrel.colloc.base.BaseActivity
+import com.karrel.colloc.api.colloc.CollocApiProvider
 import com.karrel.colloc.api.loadGlobalTime.NaverGlobalAPIProvider
+import com.karrel.colloc.base.BaseActivity
 import com.karrel.colloc.notification.NotificationUtil
 import com.karrel.colloc.ui.NoahMainFragment
 import java.util.*
+
 
 private const val TAG = "dlwlrma"
 
@@ -23,10 +25,16 @@ class NoahMainActivity : BaseActivity() {
         Toast.makeText(this, "Receive message!", Toast.LENGTH_LONG).show()
 
         registerAlarm("청담동", 3600000)
+        CollocApiProvider.getAirdata("AS244148.546388","412423.75772",{
+
+        },{
+            Log.d("dlwlrma", "LOAD ERROR $it")
+        })
     }
 
 
     override val initView: () -> Unit = {
+
 
         supportFragmentManager.beginTransaction().replace(R.id.container, NoahMainFragment.newInstance()).commit()
 
@@ -35,6 +43,16 @@ class NoahMainActivity : BaseActivity() {
                 onError = { info -> Log.d(TAG, "Load Fail :  $info") }
         )
         disposables.add(disposable)
+
+//        val disposable = NaverGlobalAPIProvider.getCurrentTime(
+//                onLoaded = { time -> Log.d(TAG, "Load Global Time : $time") },
+//                onError = { info -> Log.d(TAG, "Load Fail :  $info") }
+//        )
+//        disposables.add(disposable)
+
+
+
+
     }
 
     private fun registerAlarm(location: String, interval: Long) {
