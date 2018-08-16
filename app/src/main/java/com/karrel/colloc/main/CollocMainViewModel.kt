@@ -41,15 +41,15 @@ class CollocMainViewModel(application: Application) : AndroidViewModel(applicati
 //                .concatMap {  }
 //                .subscribe{ Log.i( it.documents!![0].x , it.documents!![0].y) }
 
-        var dis = getCollocService()
-                .getAirData(1.5, 2.5)
-
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        { mAirData!!.value = it },
-                        { Toast.makeText(context, it.message, Toast.LENGTH_LONG).show() }
-                )
+//        var dis = getCollocService()
+//                .getAirData(1.5, 2.5)
+//
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(
+//                        { mAirData!!.value = it },
+//                        { Toast.makeText(context, it.message, Toast.LENGTH_LONG).show() }
+//                )
 
         return mAirData as MutableLiveData<AirData>
     }

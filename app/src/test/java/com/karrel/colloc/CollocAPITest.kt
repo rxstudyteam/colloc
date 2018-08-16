@@ -5,7 +5,6 @@ import io.reactivex.schedulers.Schedulers
 import org.junit.Assert.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.junit.runner.RunWith
 import java.util.concurrent.TimeUnit
 
 class CollocAPITest {

@@ -32,10 +32,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-//    debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
-//    releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.1.0'
+    debugImplementation ('com.readystatesoftware.chuck:library:1.1.0') {
+        exclude group: 'com.android.support'
+    }
+    releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.1.0'
 
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation('com.squareup.okhttp3:logging-interceptor:3.10.0')
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'

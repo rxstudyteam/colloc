@@ -14,6 +14,7 @@ import com.karrel.colloc.R
 import com.karrel.colloc.databinding.CollocMainFrBinding
 import com.karrel.colloc.model.airdata.AirData
 import io.reactivex.Scheduler
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.colloc_main_fr.*
 
@@ -50,6 +51,16 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         return bb.root
     }
 
+    val disposables: Set<Disposable> = emptySet()
+    override fun onDestroy() {
+        super.onDestroy()
+        for (disposable in disposables) {
+            if (!disposable.isDisposed)
+                disposable.dispose()
+        }
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onLoadOnce()
@@ -67,16 +78,21 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         bb.indecater.setCount(mItemCount)
         bb.indecater.setCurrentPosition(mPosition)
 
-//        var v = Net.create(LocalService.BASEURL, LocalService::class.java)
-//                .getTM(126.57821604896051, 33.45613394001848)
-//                .subscribeOn(Schedulers.io())
-//                .subscribe({ Log::i },
-//                        { Log::e })
-//        var ss :  Net.create( LocalService::BASEURL , LocalService::class.java )
-//                .getTM(132.0,37.0)
-//                .subscribe()
+        disposables + Net.create(LocalService::class.java)
+                .getTM(126.57821604896051, 33.45613394001848)
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        { Log::i },
+                        { Log::e }
+                )
 
-//        bb.vm?.getAirData(mLocation)!!.observe(this, Observer { onUpdateUI(it) })
+        disposables + Net.create(CollocService::class.java)
+                .getAirData(244148.546388, 412423.75772)
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        { Log::i },
+                        { Log::e }
+                )
     }
 
     private fun onLoad() {

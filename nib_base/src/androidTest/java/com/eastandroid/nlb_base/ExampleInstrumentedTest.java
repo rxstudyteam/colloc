@@ -24,3 +24,4 @@ public class ExampleInstrumentedTest {
         assertEquals("com.eastandroid.nlb_base.test", appContext.getPackageName());
     }
 }
+

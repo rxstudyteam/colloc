@@ -181,9 +181,10 @@ object Log {
 //
 //            return sum
 //        } else {
-        val sb = StringBuilder(".........................................................................................")
+//        val sb = StringBuilder(".........................................................................................")
+        val sb = StringBuilder(".............................................")
 
-        sb.replace(0, tag.length, tag)
+//        sb.replace(0, tag.length, tag)
         sb.replace(sb.length - locator.length, sb.length, locator)
         val adj_tag = sb.toString()
 
