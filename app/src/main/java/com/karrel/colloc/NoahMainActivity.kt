@@ -3,8 +3,8 @@ package com.karrel.colloc
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.karrel.colloc.base.BaseActivity
 import com.karrel.colloc.api.loadGlobalTime.NaverGlobalAPIProvider
+import com.karrel.colloc.base.BaseActivity
 import com.karrel.colloc.notification.NotificationUtil
 import com.karrel.colloc.ui.NoahMainFragment
 import java.util.*
@@ -35,6 +35,16 @@ class NoahMainActivity : BaseActivity() {
                 onError = { info -> Log.d(TAG, "Load Fail :  $info") }
         )
         disposables.add(disposable)
+
+//        val disposable = NaverGlobalAPIProvider.getCurrentTime(
+//                onLoaded = { time -> Log.d(TAG, "Load Global Time : $time") },
+//                onError = { info -> Log.d(TAG, "Load Fail :  $info") }
+//        )
+//        disposables.add(disposable)
+
+
+
+
     }
 
     private fun registerAlarm(location: String, interval: Long) {
