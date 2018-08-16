@@ -1,13 +1,14 @@
 package com.karrel.colloc.base
 
 import android.app.Application
+import android.base.BApplication
 import android.preference.PreferenceManager
 
 import com.karrel.colloc.notification.NotificationChannelManager
 import com.eastandroid.mlb_base.PP
 
 
-class BaseApplication : Application() {
+class BaseApplication : BApplication() {
     override fun onCreate() {
         super.onCreate()
         PP.CREATE(applicationContext)

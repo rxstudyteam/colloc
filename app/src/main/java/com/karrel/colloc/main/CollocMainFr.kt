@@ -1,12 +1,12 @@
 package com.karrel.colloc.main
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.log.Log
+import android.net.Net
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,6 @@ import com.karrel.colloc.R
 import com.karrel.colloc.databinding.CollocMainFrBinding
 import com.karrel.colloc.model.airdata.AirData
 import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.colloc_main_fr.*
 
@@ -68,7 +67,14 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         bb.indecater.setCount(mItemCount)
         bb.indecater.setCurrentPosition(mPosition)
 
-
+//        var v = Net.create(LocalService.BASEURL, LocalService::class.java)
+//                .getTM(126.57821604896051, 33.45613394001848)
+//                .subscribeOn(Schedulers.io())
+//                .subscribe({ Log::i },
+//                        { Log::e })
+//        var ss :  Net.create( LocalService::BASEURL , LocalService::class.java )
+//                .getTM(132.0,37.0)
+//                .subscribe()
 
 //        bb.vm?.getAirData(mLocation)!!.observe(this, Observer { onUpdateUI(it) })
     }
