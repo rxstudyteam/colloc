@@ -11,7 +11,7 @@ fun dummyAirData(): AirData = AirData().apply {
             CurrentValue("초미세먼저", 1, "좋음", "217 ㎍/㎥"),
             CurrentValue("이산화질서", 0, "좋음", "1 ㎍/㎥"),
             CurrentValue("오줌", 3, "좋음", "7 ㎍/㎥"),
-            CurrentValue("다이아몬드?", 4, "좋음", "15 ㎍/㎥"),
+            CurrentValue("일산환전소", 4, "좋음", "15 ㎍/㎥"),
             CurrentValue("아황산방귀", 6, "최고나쁨", "17 ㎍/㎥")
     )
     hourlyForecasts = listOf(

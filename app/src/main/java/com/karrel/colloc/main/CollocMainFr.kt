@@ -5,19 +5,27 @@ import android.databinding.DataBindingUtil
 import android.log.Log
 import android.net.Net
 import android.os.Bundle
+import android.recycler.ArrayAdapter
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.karrel.colloc.R
 import com.karrel.colloc.databinding.CollocMainFrBinding
+import com.karrel.colloc.databinding.CollocMainFrCurrentItemBinding
+import com.karrel.colloc.databinding.CollocMainFrDailyItemBinding
 import com.karrel.colloc.model.airdata.AirData
+import com.karrel.colloc.model.airdata.CurrentValue
+import com.karrel.colloc.model.airdata.DailyForecast
+import com.karrel.colloc.model.airdata.HourlyForecast
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.colloc_main_fr.*
+import kotlinx.android.synthetic.main.item_current.view.*
 
 class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
@@ -79,6 +87,11 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         bb.indecater.setCount(mItemCount)
         bb.indecater.setCurrentPosition(mPosition)
 
+        bb.current.adapter = CurrentAdapter()
+        bb.hourly.adapter = HourlyAdapter()
+        bb.daily.adapter = DailyAdapter()
+
+
         disposables + Net.create(LocalService::class.java)
                 .getTM(126.57821604896051, 33.45613394001848)
                 .subscribeOn(Schedulers.io())
@@ -92,14 +105,77 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 .subscribe { onUpdateUI(it) }
     }
 
+
     private fun onUpdateUI(airData: AirData?) {
         Log.e("여기에 들어옴", airData)
-        bb.root.background.level = airData?.overallValue?.grade ?: 0
-
         bb.locationLabel.text = "현재 위치".takeIf { mPosition == 0 }
-        bb.locationName.text = airData?.overallValue?.locationName
-        bb.status.text = airData?.overallValue?.status
-        bb.updateTime.text = airData?.overallValue?.updateTime
+
+        if (airData == null)
+            return
+
+        airData.overallValue.apply {
+            bb.gradeBg.background.level = grade
+            bb.locationName.text = locationName
+            bb.grade.setImageLevel(grade)
+            bb.status.text = status
+            bb.updateTime.text = updateTime
+        }
+
+        (bb.current.adapter as CurrentAdapter).set(airData.currentValues)
+//        (bb.hourly.adapter as HourlyAdapter).set(airData.hourlyForecasts)
+//        (bb.daily.adapter as DailyAdapter).set(airData.dailyForecasts)
+
+    }
+
+
+    class CurrentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var bb: CollocMainFrCurrentItemBinding = CollocMainFrCurrentItemBinding.bind(itemView)
+    }
+
+    class CurrentAdapter : ArrayAdapter<CurrentViewHolder, CurrentValue>(R.layout.colloc_main_fr_current_item) {
+        override fun onBindViewHolder(h: CurrentViewHolder, d: CurrentValue) {
+            h.bb.title.text = d.title
+            h.bb.grade.setImageLevel(d.grade)
+            h.bb.status.text = d.status
+            h.bb.value.text = d.value
+        }
+
+        override fun onCreateViewHolder(itemView: View): CurrentViewHolder {
+            return CurrentViewHolder(itemView)
+        }
+    }
+
+
+    class HourlyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var bb: CollocMainFrCurrentItemBinding = CollocMainFrCurrentItemBinding.bind(itemView)
+    }
+
+    class HourlyAdapter : ArrayAdapter<HourlyViewHolder, HourlyForecast>(R.layout.colloc_main_fr_hourly_item) {
+        override fun onBindViewHolder(h: HourlyViewHolder, d: HourlyForecast) {
+            h.bb.title.text = d.title
+            h.bb.grade.setImageLevel(d.grade)
+            h.bb.status.text = d.status
+        }
+
+        override fun onCreateViewHolder(itemView: View): HourlyViewHolder {
+            return HourlyViewHolder(itemView)
+        }
+    }
+
+    class DailyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var bb: CollocMainFrDailyItemBinding = CollocMainFrDailyItemBinding.bind(itemView)
+    }
+
+    class DailyAdapter : ArrayAdapter<DailyViewHolder, DailyForecast>(R.layout.colloc_main_fr_daily_item) {
+        override fun onBindViewHolder(h: DailyViewHolder, d: DailyForecast) {
+            h.bb.title.text = d.title
+            h.bb.grade.setImageLevel(d.grade)
+            h.bb.status.text = d.status
+        }
+
+        override fun onCreateViewHolder(itemView: View): DailyViewHolder {
+            return DailyViewHolder(itemView)
+        }
     }
 
 

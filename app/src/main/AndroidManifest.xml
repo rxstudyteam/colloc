@@ -18,8 +18,6 @@
         android:theme="@style/AppTheme.Notitle"
         tools:ignore="GoogleAppIndexingWarning">
         <!-- <activity android:name=".MainActivity"> -->
-
-
         <activity
             android:name=".main.CollocMain"
             android:exported="true"

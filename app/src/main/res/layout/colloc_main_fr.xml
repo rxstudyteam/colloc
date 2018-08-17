@@ -2,9 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".main.CollocMain">
+    tools:context=".main.CollocMainFr">
 
     <data>
+
         <variable
             name="vm"
             type="com.karrel.colloc.main.CollocMainViewModel" />
@@ -26,10 +27,11 @@
             android:fillViewport="true">
 
             <android.support.constraint.ConstraintLayout
+                android:id="@+id/grade_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#00f"
-                tools:background="#999">
+                android:background="@drawable/emoticon_eight_level_color"
+                tools:background="#aaa">
 
                 <android.support.v7.widget.AppCompatImageView
                     android:layout_width="0dp"
@@ -42,7 +44,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:visibility="visible" />
+                    tools:visibility="gone" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/location_label"
@@ -158,7 +160,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/list"
+                    android:id="@+id/current"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
@@ -166,7 +168,7 @@
                     android:paddingLeft="@dimen/space"
                     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3"
-                    tools:listitem="@layout/colloc_main_fr_nowstate_item" />
+                    tools:listitem="@layout/colloc_main_fr_current_item" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/advertising1_lable"
@@ -175,7 +177,7 @@
                     android:text="광고(미세먼지 예보는 광고 밑으로 스크롤하기)"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/list" />
+                    app:layout_constraintTop_toBottomOf="@+id/current" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/advertising1"
@@ -191,7 +193,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/advertising1_lable" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/time_histroy"
+                    android:id="@+id/hourly_title"
                     style="@style/sub"
                     android:layout_marginTop="10dp"
                     android:text="시간별 예보(좋음,보통,나쁨,매우나쁨)"
@@ -201,27 +203,28 @@
                     app:layout_constraintTop_toBottomOf="@+id/advertising1" />
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/time_histroy_list"
+                    android:id="@+id/hourly"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:clipToPadding="false"
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/space"
                     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@+id/time_histroy"
-                    tools:listitem="@layout/colloc_main_fr_time_histroy_item" />
+                    app:layout_constraintTop_toBottomOf="@+id/hourly_title"
+                    tools:listitem="@layout/colloc_main_fr_hourly_item" />
+
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/day_histroy"
+                    android:id="@+id/daily_title"
                     style="@style/sub"
                     android:layout_marginTop="5dp"
                     android:text="일별 예보(좋음,보통,나쁨,매우나쁨)"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/time_histroy_list" />
+                    app:layout_constraintTop_toBottomOf="@+id/hourly" />
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/day_histroy_list"
+                    android:id="@+id/daily"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
@@ -229,9 +232,9 @@
                     app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/day_histroy"
+                    app:layout_constraintTop_toBottomOf="@+id/daily_title"
                     tools:itemCount="15"
-                    tools:listitem="@layout/colloc_main_fr_day_histroy_item" />
+                    tools:listitem="@layout/colloc_main_fr_daily_item" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/detail_lable"
@@ -240,7 +243,7 @@
                     android:textSize="13dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/day_histroy_list" />
+                    app:layout_constraintTop_toBottomOf="@+id/daily" />
 
                 <GridLayout
                     android:id="@+id/detail_layer"

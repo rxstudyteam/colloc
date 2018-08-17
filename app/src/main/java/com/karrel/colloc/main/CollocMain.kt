@@ -1,6 +1,5 @@
 package com.karrel.colloc.main
 
-import android.net.Net
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -14,10 +13,6 @@ import android.widget.Toast
 import com.eastandroid.mlb_base.PP
 import com.karrel.colloc.R
 import com.karrel.colloc.base.BaseActivity
-import com.karrel.colloc.model.airdata.AirData
-import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.colloc_main.*
 import kotlinx.android.synthetic.main.colloc_main_content.*
 import java.util.*

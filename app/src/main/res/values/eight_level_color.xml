@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="eight_level_color_0">#aaaaaa</drawable>
+    <drawable name="eight_level_color_1">#1976D3</drawable>
+    <drawable name="eight_level_color_2">#0288D1</drawable>
+    <drawable name="eight_level_color_3">#00C290</drawable>
+    <drawable name="eight_level_color_4">#00BC68</drawable>
+    <drawable name="eight_level_color_5">#FF8E01</drawable>
+    <drawable name="eight_level_color_6">#F06B02</drawable>
+    <drawable name="eight_level_color_7">#D32F2E</drawable>
+    <drawable name="eight_level_color_8">#424242</drawable>
+</resources>
