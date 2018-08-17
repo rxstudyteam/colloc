@@ -7,13 +7,17 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.log.Log
 import android.net.Net
+import android.util.SDF
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.karrel.colloc.R
 import com.karrel.colloc.databinding.CollocMainFrBinding
-import com.karrel.colloc.model.airdata.AirData
+import com.karrel.colloc.model.airdata.*
+import io.reactivex.ObservableSource
+import io.reactivex.Observer
 import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.colloc_main_fr.*
@@ -82,15 +86,23 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                 .getTM(126.57821604896051, 33.45613394001848)
                 .subscribeOn(Schedulers.io())
                 .filter { it.documents.isNotEmpty() }
-                .flatMap { Net.create(CollocService::class.java).getAirData(it.documents[0].x , it.documents[0].y )}
-                .subscribe(
-                        { Log::i },
-                        { Log::e }
-                )
+                .flatMap {
+                    Net.create(CollocService::class.java)
+                            .getAirData(it.documents[0].x, it.documents[0].y)
+                            .onErrorResumeNext { observer: Observer<in AirData> -> observer.onNext(dummyAirData()) }
+                }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { onUpdateUI(it) }
     }
 
-    private fun onLoad() {
+    private fun onUpdateUI(airData: AirData?) {
+        Log.e("여기에 들어옴", airData)
+        bb.locationLabel.text = "현재 위치".takeIf { mPosition == 0 }
+        bb.locationName.text = airData?.overallValue?.locationName
+    }
 
+
+    private fun onLoad() {
     }
 
     //-------------------------------------------------------------------------------------
@@ -103,10 +115,6 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 //            it.toString()
 //        })
         swipe_layer.isRefreshing = false
-    }
-
-    private fun onUpdateUI(airData: AirData?) {
-
     }
 }
 

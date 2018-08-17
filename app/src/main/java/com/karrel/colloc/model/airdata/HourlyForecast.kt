@@ -1,7 +1,7 @@
 package com.karrel.colloc.model.airdata
 
 //시간별
-class HourlyForecast(
+data class HourlyForecast(
         var title: String? = null, // "오후10시"
         var grade: Int = 0, // 등급 : 2
         var status: String? = null, // 상태 : 좋음

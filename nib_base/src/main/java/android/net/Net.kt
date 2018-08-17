@@ -36,7 +36,7 @@ object Net {
 
     fun CREATE(context: Context) {
         okHttpClient = OkHttpClient.Builder().apply {
-            addInterceptor(HttpLoggingInterceptor())
+//            addInterceptor(HttpLoggingInterceptor())
             addInterceptor(Logger())
             addInterceptor(ChuckInterceptor(context))
         }.build()

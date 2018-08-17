@@ -56,7 +56,7 @@
                     tools:text="현재 위치" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/location_text"
+                    android:id="@+id/locationName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
@@ -66,28 +66,28 @@
                     tools:text="(마포구 서교동)" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/time"
+                    android:id="@+id/updateTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:textSize="19dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/location_text"
+                    app:layout_constraintTop_toBottomOf="@+id/locationName"
                     tools:text="2018-07-25 10:10 PM" />
 
                 <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/state_icon"
+                    android:id="@+id/grade"
                     android:layout_width="170dp"
                     android:layout_height="170dp"
                     android:layout_marginTop="30dp"
                     android:src="@drawable/emoticon_eight_level_big_1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/time" />
+                    app:layout_constraintTop_toBottomOf="@+id/updateTime" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/state_text"
+                    android:id="@+id/status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
@@ -96,18 +96,18 @@
                     android:textSize="40dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/state_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/grade"
                     tools:text="보통" />
 
                 <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/state_desc"
+                    android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:textSize="22dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/state_text"
+                    app:layout_constraintTop_toBottomOf="@+id/status"
                     tools:text="그냥 무난한 날이에요~" />
 
                 <android.view.DotIndicator
@@ -117,7 +117,7 @@
                     android:layout_marginTop="21dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/state_desc"
+                    app:layout_constraintTop_toBottomOf="@+id/description"
                     tools:background="#5f00" />
 
                 <android.support.v7.widget.AppCompatTextView

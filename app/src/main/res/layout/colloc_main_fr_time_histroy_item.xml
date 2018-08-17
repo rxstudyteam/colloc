@@ -9,7 +9,7 @@
     tools:background="#5f00">
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/cat"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -21,7 +21,7 @@
         tools:text="오전3시" />
 
     <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/state_icon"
+        android:id="@+id/grade"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginTop="10dp"
@@ -30,17 +30,17 @@
         android:src="@drawable/emoticon_eight_level_small_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cat" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/state_text"
+        android:id="@+id/status"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/state_icon"
+        app:layout_constraintTop_toBottomOf="@+id/grade"
         tools:text="좋음" />
 
 </android.support.constraint.ConstraintLayout>
