@@ -11,7 +11,7 @@
     <include
         layout="@layout/colloc_main_content"
         android:layout_width="match_parent"
-        android:layout_height="@android:dimen/status_bar_height" />
+        android:layout_height="match_parent" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navView"
