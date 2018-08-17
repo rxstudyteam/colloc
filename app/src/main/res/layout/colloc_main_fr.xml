@@ -179,18 +179,23 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/current" />
 
-                <android.support.v7.widget.AppCompatImageView
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/advertising1"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="250dp"
                     android:layout_marginTop="10dp"
-                    android:adjustViewBounds="true"
-                    android:alpha=".7"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/advertising"
+                    android:minWidth="320dp"
+                    android:minHeight="250dp"
+                    ads:adSize="MEDIUM_RECTANGLE"
+                    ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/advertising1_lable" />
+                <!--ads:adUnitId="ca-app-pub-1050589565701629/2840595969"/>-->
+
+                <!--android:layout_height="250dp"-->
+                <!--android:scaleType="fitCenter"-->
+                <!--android:src="@drawable/advertising"-->
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/hourly_title"
@@ -367,15 +372,20 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/detail_layer" />
 
-                <ImageView
+
+                    <!--android:minHeight="90dp"-->
+                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/advertising_bottom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/bottom_advertising"
+                    android:layout_marginTop="10dp"
+                    ads:adSize="SMART_BANNER"
+                    ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/memo" />
+                <!--ads:adUnitId="ca-app-pub-1050589565701629/2457452582"/>-->
             </android.support.constraint.ConstraintLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>

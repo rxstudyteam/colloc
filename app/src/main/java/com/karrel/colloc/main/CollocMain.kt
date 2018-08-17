@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.eastandroid.mlb_base.PP
+import com.google.android.gms.ads.MobileAds
 import com.karrel.colloc.R
 import com.karrel.colloc.base.BaseActivity
 import kotlinx.android.synthetic.main.colloc_main.*
@@ -24,6 +25,10 @@ class CollocMain : BaseActivity(), NavigationView.OnNavigationItemSelectedListen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //        MobileAds.initialize(applicationContext,"ca-app-pub-1050589565701629~4947884556")//REAL
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713")//TEST
+
         Toast.makeText(this, "Receive message!", Toast.LENGTH_LONG).show()
 
         setSupportActionBar(toolbar)

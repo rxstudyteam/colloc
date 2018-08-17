@@ -6,6 +6,7 @@ import android.preference.PreferenceManager
 
 import com.karrel.colloc.notification.NotificationChannelManager
 import com.eastandroid.mlb_base.PP
+import com.google.android.gms.ads.MobileAds
 
 
 class BaseApplication : BApplication() {
@@ -14,6 +15,10 @@ class BaseApplication : BApplication() {
         PP.CREATE(applicationContext)
         android.log.Log.LOG = true
         createChannel()
+
+
+//        MobileAds.initialize(applicationContext,"ca-app-pub-1050589565701629~4947884556")//REAL
+        MobileAds.initialize(applicationContext,"ca-app-pub-3940256099942544~3347511713")//TEST
     }
 
 
