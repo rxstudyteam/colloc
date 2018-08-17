@@ -97,8 +97,13 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun onUpdateUI(airData: AirData?) {
         Log.e("여기에 들어옴", airData)
+        bb.root.background.level = airData?.overallValue?.grade ?: 0
+
         bb.locationLabel.text = "현재 위치".takeIf { mPosition == 0 }
         bb.locationName.text = airData?.overallValue?.locationName
+        bb.status.text = airData?.overallValue?.status
+        bb.updateTime.text = airData?.overallValue?.updateTime
+
     }
 
 
