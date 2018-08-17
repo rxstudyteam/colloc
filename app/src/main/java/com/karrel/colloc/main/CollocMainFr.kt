@@ -2,21 +2,18 @@ package com.karrel.colloc.main
 
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
+import android.log.Log
+import android.net.Net
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
-import android.log.Log
-import android.net.Net
-import android.util.SDF
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.karrel.colloc.R
 import com.karrel.colloc.databinding.CollocMainFrBinding
-import com.karrel.colloc.model.airdata.*
-import io.reactivex.ObservableSource
+import com.karrel.colloc.model.airdata.AirData
 import io.reactivex.Observer
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -97,8 +94,12 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun onUpdateUI(airData: AirData?) {
         Log.e("여기에 들어옴", airData)
+        bb.root.background.level = airData?.overallValue?.grade ?: 0
+
         bb.locationLabel.text = "현재 위치".takeIf { mPosition == 0 }
         bb.locationName.text = airData?.overallValue?.locationName
+        bb.status.text = airData?.overallValue?.status
+        bb.updateTime.text = airData?.overallValue?.updateTime
     }
 
 
