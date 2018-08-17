@@ -23,7 +23,7 @@ class PermissionRequest(context: Context, permissions: List<String>) : Observer 
         return this
     }
 
-    fun setGrentedListener(onDenied: (requester: PermissionRequest, deniedPermissions: List<String>) -> Unit): PermissionRequest {
+    fun setDiniedListener(onDenied: (requester: PermissionRequest, deniedPermissions: List<String>) -> Unit): PermissionRequest {
         this.onDenied = onDenied
         return this
     }
@@ -53,16 +53,20 @@ class PermissionRequest(context: Context, permissions: List<String>) : Observer 
 
 
     fun run() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             onGranted()
+            return
+        }
 
         val deniedPermissions = ArrayList<String>()
         for (permission in requestPermissions) {
             if (PackageManager.PERMISSION_DENIED == ContextCompat.checkSelfPermission(mContext, permission))
                 deniedPermissions.add(permission)
         }
-        if (deniedPermissions.size <= 0)
+        if (deniedPermissions.size <= 0) {
             onGranted()
+            return
+        }
 
         PermissionObserver.addObserver(this)
         val intent = Intent(mContext, PermissionChecker::class.java)
