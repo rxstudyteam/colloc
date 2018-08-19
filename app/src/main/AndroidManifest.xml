@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Notitle"
         tools:ignore="GoogleAppIndexingWarning">
+
         <!-- <activity android:name=".MainActivity"> -->
         <activity
             android:name=".main.CollocMain"
@@ -36,7 +37,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".test.ImageWrapperTestActivity" />
 
         <service android:name=".firebase.CollocFirebaseMessagingService" />
@@ -46,7 +46,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </activity>
-        <activity android:name=".mainpage.MainPageActivity"></activity>
+        <activity android:name=".mainpage.MainPageActivity" />
 
         <service
             android:name=".notification.AlarmService"
@@ -62,6 +62,7 @@
         </receiver>
 
         <activity android:name=".alarm.AlarmSettingActivity" />
+        <activity android:name=".ui.location.LocationActivity"></activity>
     </application>
 
 </manifest>

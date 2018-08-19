@@ -1,5 +1,6 @@
 package com.karrel.colloc.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -13,7 +14,9 @@ import android.widget.Toast
 import com.eastandroid.mlb_base.PP
 import com.google.android.gms.ads.MobileAds
 import com.karrel.colloc.R
+import com.karrel.colloc.alarm.AlarmSettingActivity
 import com.karrel.colloc.base.BaseActivity
+import com.karrel.colloc.ui.location.LocationActivity
 import kotlinx.android.synthetic.main.colloc_main.*
 import kotlinx.android.synthetic.main.colloc_main_content.*
 import java.util.*
@@ -31,6 +34,7 @@ class CollocMain : BaseActivity(), NavigationView.OnNavigationItemSelectedListen
 
         Toast.makeText(this, "Receive message!", Toast.LENGTH_LONG).show()
 
+        toolbar.title = ""
         setSupportActionBar(toolbar)
 
         val toggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -64,7 +68,10 @@ class CollocMain : BaseActivity(), NavigationView.OnNavigationItemSelectedListen
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.action_settings -> return true
+            R.id.addLocation -> {
+                startActivity(Intent(this@CollocMain, LocationActivity::class.java))
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }
@@ -72,28 +79,22 @@ class CollocMain : BaseActivity(), NavigationView.OnNavigationItemSelectedListen
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
-
-            }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_manage -> {
-
-            }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
-            }
+            R.id.sendYourFriend -> {}
+            R.id.usageOfWHO -> {}
+            R.id.miseEightMode -> {}
+            R.id.sendAdmin -> {}
+            R.id.infoMise -> {}
+            R.id.forecastImage -> {}
+            R.id.MiseAlarm -> startActivity(Intent(this@CollocMain, AlarmSettingActivity::class.java))
+            R.id.setting -> {}
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    fun setToolbarBackground(grade:Int) {
+        toolbar.background.level = grade
     }
 
     //-------------------------------------------------------------------------
@@ -110,6 +111,8 @@ class CollocMain : BaseActivity(), NavigationView.OnNavigationItemSelectedListen
                         putInt(CollocMainFr.EXTRA.ITEM_COUNT, locatons.size)
                         putInt(CollocMainFr.EXTRA.POSITION, locaton)
                     }
+
+                    toolbarBackground = { grade -> setToolbarBackground(grade) }
                 }
             }
         }
@@ -122,5 +125,4 @@ class CollocMain : BaseActivity(), NavigationView.OnNavigationItemSelectedListen
             return itemList.size
         }
     }
-
 }

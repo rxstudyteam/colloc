@@ -46,6 +46,7 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private var mLocation: String = ""
     private var mPosition: Int = 0
     private var mItemCount: Int = 0
+    lateinit var toolbarBackground: (Int) -> Unit
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -125,6 +126,8 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             bb.grade.setImageLevel(grade)
             bb.status.text = status
             bb.updateTime.text = updateTime
+
+            toolbarBackground.invoke(grade)
         }
 
         (bb.current.adapter as CurrentAdapter).set(airData.currentValues)
@@ -132,6 +135,7 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 //        (bb.daily.adapter as DailyAdapter).set(airData.dailyForecasts)
 
     }
+
 
 
     class CurrentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

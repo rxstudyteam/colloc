@@ -26,7 +26,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:text="미세미세"
-        tools:text="미세미세"/>
+        android:text="Colloc"
+        tools:text="Colloc"/>
 
 </android.support.constraint.ConstraintLayout>
