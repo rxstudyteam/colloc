@@ -100,10 +100,11 @@ class CollocMain : BaseActivity(), NavigationView.OnNavigationItemSelectedListen
     //-------------------------------------------------------------------------
     internal inner class MainViewpagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
         val itemList: ArrayList<Fragment> = ArrayList()
-
         init {
-            PP.LOCATIONS.set(setOf("마포", "제주"))
-            var locatons = PP.LOCATIONS.getStringSet()
+            PP.LOCATIONS.set(setOf("마포구,37.5615756,126.838603" , "부송동,35.976749396987046,126.99599512792346"))
+            var locatons = PP.LOCATIONS.getStringSet().toTypedArray()
+            locatons =  arrayOf("헌재위치,37.57811822520621,126.98479394671537") + locatons
+
             for (locaton in locatons.indices) {
                 itemList += CollocMainFr().apply {
                     arguments = Bundle().apply {
@@ -112,7 +113,7 @@ class CollocMain : BaseActivity(), NavigationView.OnNavigationItemSelectedListen
                         putInt(CollocMainFr.EXTRA.POSITION, locaton)
                     }
 
-                    toolbarBackground = { grade -> setToolbarBackground(grade) }
+//                    toolbarBackground = { grade -> setToolbarBackground(grade) }
                 }
             }
         }

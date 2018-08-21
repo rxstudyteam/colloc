@@ -21,9 +21,8 @@
         <!-- <activity android:name=".MainActivity"> -->
         <activity
             android:name=".main.CollocMain"
-            android:exported="true"
             android:label="DC"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/DJAppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
