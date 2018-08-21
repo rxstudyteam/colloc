@@ -34,9 +34,9 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     internal interface EXTRA {
         companion object {
-            val LOCATION = "LOCATION"
-            val POSITION = "POSITION"
-            val ITEM_COUNT = "ITEM_COUNT"
+            val LOCATION = "LOCATION"      //부송동,35.976749396987046,126.99599512792346
+            val POSITION = "POSITION"      //1
+            val ITEM_COUNT = "ITEM_COUNT"  //10
         }
     }
 
@@ -44,15 +44,22 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private lateinit var bb: CollocMainFrBinding
 
     private var mLocation: String = ""
+    private var mLat: Double = 0.0
+    private var mLong: Double = 0.0
+
     private var mPosition: Int = 0
     private var mItemCount: Int = 0
-    lateinit var toolbarBackground: (Int) -> Unit
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.e(arguments)
         arguments?.run {
-            mLocation = getString(EXTRA.LOCATION, "종로")
+            var location = getString(EXTRA.LOCATION, "")
+            var location_token = location.split(",")
+            mLocation = location_token[0]
+            mLat = location_token[1].toDouble()
+            mLong = location_token[2].toDouble()
+
             mPosition = getInt(EXTRA.POSITION, -1)
             mItemCount = getInt(EXTRA.ITEM_COUNT, 0)
         }
@@ -97,7 +104,7 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
 
         disposables + Net.create(LocalService::class.java)
-                .getTM(126.57821604896051, 33.45613394001848)
+                .getTM(mLong, mLat)
                 .subscribeOn(Schedulers.io())
                 .filter { it.documents.isNotEmpty() }
                 .flatMap {
@@ -105,12 +112,18 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                             .getAirData(it.documents[0].x, it.documents[0].y)
                             .onErrorResumeNext { observer: Observer<in AirData> -> observer.onNext(dummyAirData()) }
                 }
+                .map {
+                    if(mLocation == "부송동"){
+                        it.overallValue.grade = 3
+                    }
+                     it
+                }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { onUpdateUI(it) }
 
-           bb.advertising1.loadAd(AdRequest.Builder().build())
+        bb.advertising1.loadAd(AdRequest.Builder().build())
 
-           bb.advertisingBottom.loadAd(AdRequest.Builder().build())
+        bb.advertisingBottom.loadAd(AdRequest.Builder().build())
     }
 
     private fun onUpdateUI(airData: AirData?) {
@@ -122,12 +135,12 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
         airData.overallValue.apply {
             bb.gradeBg.background.level = grade
-            bb.locationName.text = locationName
+            bb.locationName.text = mLocation
             bb.grade.setImageLevel(grade)
             bb.status.text = status
             bb.updateTime.text = updateTime
 
-            toolbarBackground.invoke(grade)
+//            toolbarBackground.invoke(grade)
         }
 
         (bb.current.adapter as CurrentAdapter).set(airData.currentValues)

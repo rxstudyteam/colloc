@@ -1,19 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <style name="DJAppTheme.NoActionBar" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
         <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="sub">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">#2000</item>
-        <item name="android:paddingLeft">14dp</item>
-        <item name="android:textSize">12dp</item>
     </style>
 </resources>

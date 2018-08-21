@@ -20,8 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<ScrollView-->
-        <android.support.v4.widget.NestedScrollView
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true">
@@ -31,11 +30,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/emoticon_eight_level_color"
+                android:paddingTop="25dp"
                 tools:background="#aaa">
 
                 <android.support.v7.widget.AppCompatImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
                     android:adjustViewBounds="true"
                     android:alpha=".5"
                     android:scaleType="fitStart"
@@ -46,11 +47,32 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:visibility="gone" />
 
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:onClick="onToggleDrawer"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_menu_white_24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="OnClick" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:onClick="onStartLocationActivity"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_add_location_white_24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="OnClick" />
+
+
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/location_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="78dp"
                     android:textSize="26dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -373,7 +395,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/detail_layer" />
 
 
-                    <!--android:minHeight="90dp"-->
+                <!--android:minHeight="90dp"-->
                 <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/advertising_bottom"
                     android:layout_width="0dp"
@@ -387,6 +409,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/memo" />
                 <!--ads:adUnitId="ca-app-pub-1050589565701629/2457452582"/>-->
             </android.support.constraint.ConstraintLayout>
-        </android.support.v4.widget.NestedScrollView>
+        </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
 </layout>
