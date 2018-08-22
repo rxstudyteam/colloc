@@ -61,51 +61,19 @@ enum class SDF private constructor(var format: String, locale: Locale = Locale.g
     hhmm_("HH:mm"),
     mmss("mm:ss"),
     ms("m:s"),
-    ahm("a h시 m분"),
+    ahm__("a h시 m분"),
+    ah__("a h시"),
     HH("HH"),
     mm2("mm"),
     yyyymmdd_hhmmss("yyyyMMdd-HHmmss");
 
+    var sdf: SimpleDateFormat = SimpleDateFormat(format, locale)
 
-    var sdf: SimpleDateFormat
+    fun format(date: Date?) = sdf.format(date).takeIf { date != null } ?: ""
+    fun format(milliseconds: Long) = format(Date(milliseconds))
+    fun now() = format(System.currentTimeMillis())
+    fun parse(date: String) = sdf.parse(date).time
+    fun opt_parse(date: String?) = try { sdf.parse(date).time } catch (e: ParseException) { 0L }
+    fun opt_parse(date: String?, default_date: Long) = try { sdf.parse(date).time } catch (e: ParseException) { default_date }
 
-    init {
-        sdf = SimpleDateFormat(format, locale)
-    }
-
-    fun format(date: Date?): String {
-        return if (date == null) "" else sdf.format(date)
-    }
-
-    fun format(milliseconds: Long): String {
-        return format(Date(milliseconds))
-    }
-
-    fun now(): String {
-        return format(System.currentTimeMillis())
-    }
-
-    @Throws(ParseException::class)
-    fun parse(date: String): Long {
-        return sdf.parse(date).time
-    }
-
-    fun opt_parse(date: String): Long {
-        try {
-            return parse(date)
-        } catch (e: ParseException) {
-            e.printStackTrace()
-            return 0L
-        }
-
-    }
-
-    fun opt_parse(date: String, default_date: Long): Long {
-        try {
-            return sdf.parse(date).time
-        } catch (e: ParseException) {
-            e.printStackTrace()
-            return default_date
-        }
-    }
 }

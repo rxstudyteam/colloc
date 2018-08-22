@@ -9,6 +9,8 @@ import android.recycler.ArrayAdapter
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
+import android.util.DT
+import android.util.SDF
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,10 +21,8 @@ import com.karrel.colloc.R
 import com.karrel.colloc.databinding.CollocMainFrBinding
 import com.karrel.colloc.databinding.CollocMainFrCurrentItemBinding
 import com.karrel.colloc.databinding.CollocMainFrDailyItemBinding
-import com.karrel.colloc.model.airdata.AirData
-import com.karrel.colloc.model.airdata.CurrentValue
-import com.karrel.colloc.model.airdata.DailyForecast
-import com.karrel.colloc.model.airdata.HourlyForecast
+import com.karrel.colloc.databinding.CollocMainFrHourlyItemBinding
+import com.karrel.colloc.model.airdata.*
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -113,10 +113,16 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                             .onErrorResumeNext { observer: Observer<in AirData> -> observer.onNext(dummyAirData()) }
                 }
                 .map {
-                    if(mLocation == "부송동"){
+                    //변형
+                    for (i in 0 until it.hourlyForecasts.size)
+                        it.hourlyForecasts[i].title = DT.opt_format(it.hourlyForecasts[i].title, SDF.yyyymmddhhmm_1.sdf, SDF.ah__.sdf)
+                    it
+                }
+                .map {
+                    //FIXME for debug
+                    if (mLocation == "부송동")
                         it.overallValue.grade = 3
-                    }
-                     it
+                    it
                 }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { onUpdateUI(it) }
@@ -139,17 +145,29 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             bb.grade.setImageLevel(grade)
             bb.status.text = status
             bb.updateTime.text = updateTime
-
-//            toolbarBackground.invoke(grade)
         }
 
         (bb.current.adapter as CurrentAdapter).set(airData.currentValues)
-//        (bb.hourly.adapter as HourlyAdapter).set(airData.hourlyForecasts)
-//        (bb.daily.adapter as DailyAdapter).set(airData.dailyForecasts)
+        (bb.hourly.adapter as HourlyAdapter).set(airData.hourlyForecasts)
+        (bb.daily.adapter as DailyAdapter).set(airData.dailyForecasts)
 
+        if (airData.extraInformation.isNotEmpty()) {
+            airData.extraInformation.apply {
+                //@formatter:off
+                bb.updatedTime.text = this[0].value.takeIf { size > 0 }
+                bb.pm10Name   .text = this[1].value.takeIf { size > 1 }
+                bb.pm25Name   .text = this[2].value.takeIf { size > 2 }
+                bb.o3         .text = this[3].value.takeIf { size > 3 }
+                bb.co         .text = this[4].value.takeIf { size > 4 }
+                bb.sO2        .text = this[5].value.takeIf { size > 5 }
+                bb.pm10       .text = this[6].value.takeIf { size > 6 }
+                bb.pm25       .text = this[7].value.takeIf { size > 7 }
+                bb.tqs        .text = this[8].value.takeIf { size > 8 }
+                //@formatter:on
+            }
+        }
+        bb.note.text = airData.note
     }
-
-
 
     class CurrentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var bb: CollocMainFrCurrentItemBinding = CollocMainFrCurrentItemBinding.bind(itemView)
@@ -170,7 +188,7 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
 
     class HourlyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var bb: CollocMainFrCurrentItemBinding = CollocMainFrCurrentItemBinding.bind(itemView)
+        var bb: CollocMainFrHourlyItemBinding = CollocMainFrHourlyItemBinding.bind(itemView)
     }
 
     class HourlyAdapter : ArrayAdapter<HourlyViewHolder, HourlyForecast>(R.layout.colloc_main_fr_hourly_item) {
@@ -191,7 +209,7 @@ class CollocMainFr : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     class DailyAdapter : ArrayAdapter<DailyViewHolder, DailyForecast>(R.layout.colloc_main_fr_daily_item) {
         override fun onBindViewHolder(h: DailyViewHolder, d: DailyForecast) {
-            h.bb.title.text = d.title
+            h.bb.title.text = d.getDate()
             h.bb.grade.setImageLevel(d.grade)
             h.bb.status.text = d.status
         }

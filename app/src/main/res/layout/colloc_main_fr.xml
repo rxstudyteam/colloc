@@ -382,7 +382,7 @@
                 </GridLayout>
 
                 <TextView
-                    android:id="@+id/memo"
+                    android:id="@+id/note"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -406,7 +406,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/memo" />
+                    app:layout_constraintTop_toBottomOf="@+id/note" />
                 <!--ads:adUnitId="ca-app-pub-1050589565701629/2457452582"/>-->
             </android.support.constraint.ConstraintLayout>
         </ScrollView>

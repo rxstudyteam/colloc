@@ -63,29 +63,16 @@ class CollocMain : BaseActivity(), NavigationView.OnNavigationItemSelectedListen
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.app_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        Log.e(item.title)
         return super.onOptionsItemSelected(item)
-//        when (item.itemId) {
-//            R.id.addLocation -> {
-//                startActivity(Intent(this@CollocMain, LocationActivity::class.java))
-//                return true
-//            }
-//            else ->
-//                return super.onOptionsItemSelected(item)
-//        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
+        Log.e(item.title)
         when (item.itemId) {
             R.id.sendYourFriend -> {
             }
